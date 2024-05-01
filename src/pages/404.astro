@@ -1,0 +1,14 @@
+---
+import {useTranslations} from "../i18n/utils";
+const {locale} = useTranslations(Astro.url);
+---
+<!doctype html>
+<html>
+<head>
+    <!-- Always redirect to base path -->
+    <meta http-equiv="refresh" content={`0;url=/${locale}`}/>
+</head>
+<body>
+</body>
+</html>
+

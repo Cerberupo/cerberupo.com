@@ -1,0 +1,24 @@
+---
+import {styleVars} from '../styles/vars';
+---
+<div class="container">
+    <slot/>
+</div>
+<style lang="scss" define:vars={{...styleVars}}>
+  @import "../styles/vars";
+
+  .container {
+    width: 100%;
+    max-width: var(--containerWidth);
+    margin: 0 auto;
+    padding-left: var(--sp64);
+    padding-right: var(--sp64);
+  }
+
+  @media all and (max-width: $pepe) {
+    .container {
+      padding-left: var(--sp32);
+      padding-right: var(--sp32);
+    }
+  }
+</style>

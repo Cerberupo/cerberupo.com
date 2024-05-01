@@ -1,0 +1,18 @@
+---
+import {useTranslations} from "../i18n/utils";
+import {styleVars} from "../styles/vars";
+import Container from "../layouts/Container.astro";
+const {t} = useTranslations(Astro.url);
+---
+
+<header>
+    <Container>
+        Hola
+    </Container>
+</header>
+
+<style define:vars={{...styleVars}}>
+    header {
+        background-color: var(--headerBg);
+    }
+</style>
