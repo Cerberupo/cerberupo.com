@@ -1,0 +1,80 @@
+---
+import {TimelineCompany} from "../interfaces/timeline-company";
+interface Props {
+    companies: TimelineCompany[];
+}
+const {companies} = Astro.props;
+import {useTranslations} from "../i18n/utils";
+import TimelineCard from "./TimelineCard.astro";
+import Container from "../layouts/Container.astro";
+import Spacer from "../layouts/Spacer.astro";
+import {StyleSPEnum} from "../styles/enums/sp.enum";
+import Box from "../layouts/Box.astro";
+import {Image} from 'astro:assets';
+import Flex from "../layouts/Flex.astro";
+import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
+const {t} = useTranslations(Astro.url);
+function getDate(date: Date | null) {
+    if (!date) return t('timeline.currently');
+    console.log(date.getMonth(), date);
+    return t(`timeline.months.${date.getMonth()}`) + ' ' + date.getFullYear();
+}
+---
+
+<section>
+    <Spacer size={StyleSPEnum.SP64}/>
+    <Container>
+        {companies.map((company) =>
+                <Box>
+                    <Box class="company-info">
+                        <Box class="date">
+                            {getDate(company.projects[0].startDate)}
+                        </Box>
+                    </Box>
+                    {company.projects.map((project) =>
+                            <Flex>
+                                <Box class="timeline-card">
+                                    <TimelineCard {...project.proyectCardProps}/>
+                                </Box>
+                                <Flex justifyContent={StyleAlignItemsEnum.CENTER} class="project-line-container">
+                                    <Box style={{background: project.color}} class="project-line"/>
+                                </Flex>
+                                <Box class="timeline-image-container">
+                                    <Image class="timeline-image" src={project.proyectImage}
+                                           alt={`${project.proyectName} project`}/>
+                                </Box>
+                            </Flex>
+                    )}
+                </Box>
+        )}
+    </Container>
+</section>
+
+<style lang="scss">
+
+  .timeline-image-container {
+    align-self: stretch;
+    flex: 1;
+
+    .timeline-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .timeline-card {
+    flex: 1;
+  }
+
+  .project-line-container {
+    width: 230px;
+    align-self: stretch;
+
+    .project-line {
+      width: 6px;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+</style>

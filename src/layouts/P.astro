@@ -1,0 +1,18 @@
+---
+interface Props {
+    class: string;
+}
+
+let {class: _class, ...rest} = Astro.props;
+if (!_class) _class = '';
+---
+<p class={_class} {...rest}>
+    <slot/>
+</p>
+<style lang="scss">
+  @import "../styles/vars";
+
+  p {
+    margin-bottom: $sp8;
+  }
+</style>

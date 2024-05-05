@@ -2,12 +2,38 @@
 import {useTranslations} from "../i18n/utils";
 import Layout from '../layouts/Layout.astro';
 import Header from "../components/Header.astro";
+import Timeline from "../components/Timeline.astro";
+import LeemonsLogo from '../images/leemons.png';
+import LeemonsImage from '../images/timeline-leemons.jpg';
+import {TagEnum} from "../enums/tag.enum";
 
 const {t, locale} = useTranslations(Astro.url);
 ---
 
 <Layout title="Cerberupo">
     <Header/>
+    <Timeline companies={[{
+        name: t('card.leemons.name'),
+        logo: LeemonsLogo,
+        projects: [
+            {
+                endDate: null,
+                startDate: new Date('06/01/2021'),
+                cardSide: 'left',
+                color: '#B1E400',
+                proyectLogo: LeemonsLogo,
+                proyectImage: LeemonsImage,
+                proyectName: t('card.leemons.name'),
+                proyectCardProps: {
+                    name: t('card.leemons.name'),
+                    position: t('card.leemons.position'),
+                    logo: LeemonsLogo,
+                    description: t('card.leemons.description'),
+                    tags: [TagEnum.MONGO_DB]
+                }
+            }
+        ]
+    }]}/>
 </Layout>
 
 <style>

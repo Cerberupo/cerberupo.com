@@ -1,24 +1,43 @@
 ---
-import {styleVars} from '../styles/vars';
+interface Props {
+    pt: boolean;
+    pb: boolean;
+}
+
+const {pt, pb} = Astro.props;
 ---
-<div class="container">
+<div class={`container ${pt && 'pt'} ${pb && 'pb'}`}>
     <slot/>
 </div>
-<style lang="scss" define:vars={{...styleVars}}>
+<style lang="scss">
   @import "../styles/vars";
 
   .container {
     width: 100%;
-    max-width: var(--containerWidth);
+    max-width: $containerWidth;
     margin: 0 auto;
-    padding-left: var(--sp64);
-    padding-right: var(--sp64);
+    padding-left: $sp64;
+    padding-right: $sp64;
   }
 
-  @media all and (max-width: $pepe) {
+  .pb {
+    padding-top: $sp64;
+  }
+
+  .pb {
+    padding-bottom: $sp64;
+  }
+
+  @media all and (max-width: $mediaTablet) {
     .container {
-      padding-left: var(--sp32);
-      padding-right: var(--sp32);
+      padding-left: $sp32;
+      padding-right: $sp32;
+    }
+    .pb {
+      padding-top: $sp32;
+    }
+    .pb {
+      padding-bottom: $sp32;
     }
   }
 </style>

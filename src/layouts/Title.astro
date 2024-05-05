@@ -1,0 +1,29 @@
+---
+import {StyleFSEnum} from "../styles/enums/fs.enum";
+import Text from "./Text.astro";
+interface Props {
+    size: 'h1' | 'h2' | 'h3';
+}
+
+let {size, ...rest} = Astro.props;
+if (!size) size = 'h2';
+const values = {
+    h1: StyleFSEnum.FS48,
+    h2: StyleFSEnum.FS32,
+    h3: StyleFSEnum.FS24
+};
+const styleVars = {size: values[size]}
+---
+<Text as={size} styleVars={styleVars} {...rest} class='title'>
+    <slot/>
+</Text>
+
+<style lang="scss" define:vars={styleVars}>
+  @import "../styles/vars";
+
+  .title {
+    font-size: var(--size);
+    line-height: var(--size);
+    font-weight: 600;
+  }
+</style>

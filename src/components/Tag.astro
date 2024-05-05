@@ -1,0 +1,39 @@
+---
+import {getTagInfo} from "../helpers/getTagInfo";
+import {useTranslations} from "../i18n/utils";
+import {TagEnum} from "../enums/tag.enum";
+import Box from "../layouts/Box.astro";
+import {Image} from 'astro:assets';
+import Text from "../layouts/Text.astro";
+import {StyleFSEnum} from "../styles/enums/fs.enum";
+interface Props {
+    name: TagEnum;
+}
+const {name} = Astro.props;
+const {t} = useTranslations(Astro.url);
+const info = getTagInfo(name);
+---
+
+<Box class="tag">
+    <Image src={info.image} alt={`${info.name} logo`}/>
+    <Text fontSize={StyleFSEnum.FS14}>{info.name}</Text>
+</Box>
+
+<style lang="scss">
+  @import "../styles/vars";
+
+  .tag {
+    padding: 2px 8px 2px 8px;
+    background-color: $tagsBg;
+    border-radius: 4px;
+    color: $darkLight;
+    display: inline-block;
+
+    img {
+      max-width: 16px;
+      max-height: 16px;
+      filter: grayscale(1);
+    }
+  }
+</style>
+

@@ -1,0 +1,78 @@
+---
+import {AsEnum} from "../enums/as.enum";
+import {StyleSPEnum} from "../styles/enums/sp.enum";
+interface Props {
+    as: AsEnum;
+    class: string;
+    pr: StyleSPEnum;
+    pt: StyleSPEnum;
+    pb: StyleSPEnum;
+    pl: StyleSPEnum;
+    p: StyleSPEnum;
+    mr: StyleSPEnum;
+    mt: StyleSPEnum;
+    mb: StyleSPEnum;
+    ml: StyleSPEnum;
+    m: StyleSPEnum;
+    styleVars: any;
+}
+
+let {
+    as,
+    class: _class,
+    styleVars,
+    pr,
+    pt,
+    pl,
+    pb,
+    p,
+    mr,
+    mt,
+    mb,
+    ml,
+    m,
+    ...rest
+} = Astro.props;
+if (!_class) _class = '';
+if (!as) as = AsEnum.DIV;
+if (!styleVars) styleVars = {};
+if (!p) p = StyleSPEnum.SP0;
+if (!pt) pt = p;
+if (!pl) pl = p;
+if (!pb) pb = p;
+if (!pr) pr = p;
+if (!m) m = StyleSPEnum.SP0;
+if (!mt) mt = m;
+if (!ml) ml = m;
+if (!mb) mb = m;
+if (!mr) mr = m;
+styleVars = {...styleVars, pt, pl, pb, pr, mt, ml, mb, mr,};
+_class += ' box';
+---
+{as === 'div' &&
+<div class={_class} {...rest}>
+    <slot/>
+</div> }
+{as === 'span' &&
+<span class={_class} {...rest}>
+    <slot/>
+</span> }
+{as === 'h1' &&
+<h1 class={_class} {...rest}>
+    <slot/>
+</h1> }
+{as === 'h2' &&
+<h2 class={_class} {...rest}>
+    <slot/>
+</h2> }
+{as === 'h3' &&
+<h3 class={_class} {...rest}>
+    <slot/>
+</h3> }
+
+<style lang="scss" define:vars={styleVars}>
+  .box {
+    padding: var(--pt) var(--pr) var(--pb) var(--pl);
+    margin: var(--mt) var(--mr) var(--mb) var(--ml);
+  }
+</style>

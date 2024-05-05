@@ -1,0 +1,34 @@
+---
+import {StyleSPEnum} from "../styles/enums/sp.enum";
+import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
+import {StyleFlexDirectionEnum} from "../styles/enums/flex-direction.enum";
+import {StyleJustifyContentEnum} from "../styles/enums/justify-content.enum";
+interface Props {
+    alignItems: StyleAlignItemsEnum;
+    justifyContent: StyleJustifyContentEnum;
+    gap: StyleSPEnum;
+    direction: StyleFlexDirectionEnum;
+    class: string;
+}
+
+let {alignItems, justifyContent, gap, direction, class: _class, ...rest} = Astro.props;
+if (!alignItems) alignItems = StyleAlignItemsEnum.START;
+if (!justifyContent) justifyContent = StyleJustifyContentEnum.START;
+if (!direction) direction = StyleFlexDirectionEnum.ROW;
+if (!gap) gap = StyleSPEnum.SP0;
+if (!_class) _class = '';
+---
+<div class={`${_class} flex`} {...rest}>
+    <slot/>
+</div>
+<style lang="scss" define:vars={{alignItems, justifyContent, gap, direction}}>
+  @import "../styles/vars";
+
+  .flex {
+    display: flex;
+    align-items: var(--alignItems);
+    justify-content: var(--justifyContent);
+    gap: var(--gap);
+    flex-direction: var(--direction);
+  }
+</style>
