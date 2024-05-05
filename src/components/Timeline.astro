@@ -16,14 +16,13 @@ import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
 const {t} = useTranslations(Astro.url);
 function getDate(date: Date | null) {
     if (!date) return t('timeline.currently');
-    console.log(date.getMonth(), date);
     return t(`timeline.months.${date.getMonth()}`) + ' ' + date.getFullYear();
 }
 ---
 
 <section>
     <Spacer size={StyleSPEnum.SP64}/>
-    <Container>
+    <Container class="container">
         {companies.map((company) =>
                 <Box>
                     <Box class="company-info">
@@ -41,7 +40,7 @@ function getDate(date: Date | null) {
                                 </Flex>
                                 <Box class="timeline-image-container">
                                     <Image class="timeline-image" src={project.proyectImage}
-                                           alt={`${project.proyectName} project`}/>
+                                           alt={`${project.proyectName} project`} loading="eagle"/>
                                 </Box>
                             </Flex>
                     )}
@@ -51,6 +50,20 @@ function getDate(date: Date | null) {
 </section>
 
 <style lang="scss">
+
+  $centerWidth: 230px;
+
+  .container {
+    position: relative;
+  }
+
+  .company-info {
+    position: absolute;
+    width: $centerWidth;
+    left: calc(50% - $centerWidth/2);
+    top: 0;
+    text-align: center;
+  }
 
   .timeline-image-container {
     align-self: stretch;
@@ -68,7 +81,7 @@ function getDate(date: Date | null) {
   }
 
   .project-line-container {
-    width: 230px;
+    width: $centerWidth;
     align-self: stretch;
 
     .project-line {

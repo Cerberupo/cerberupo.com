@@ -13,10 +13,12 @@
     "@astrojs/check": "^0.5.10",
     "astro": "^4.7.0",
     "lodash": "^4.17.21",
+    "sharp": "^0.33.3",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.0",
+    "sass": "^1.76.0",
     "scss": "^0.2.4"
   }
 }

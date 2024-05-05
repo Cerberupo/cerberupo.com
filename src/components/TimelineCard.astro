@@ -21,7 +21,7 @@ const {t} = useTranslations(Astro.url);
         <Text fontSize={StyleFSEnum.FS12}>
             {name}
         </Text>
-        <Image class="logo" src={logo} alt={`${name} logo`}/>
+        <Image class="logo" src={logo} alt={`${name} logo`} loading="eagle"/>
     </Flex>
     <Spacer size={StyleSPEnum.SP8}/>
     <Text fontSize={StyleFSEnum.FS24}>{position}</Text>

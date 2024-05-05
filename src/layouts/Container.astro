@@ -2,11 +2,12 @@
 interface Props {
     pt: boolean;
     pb: boolean;
+    class: string;
 }
 
-const {pt, pb} = Astro.props;
+const {pt, pb, class: _class, ...rest} = Astro.props;
 ---
-<div class={`container ${pt && 'pt'} ${pb && 'pb'}`}>
+<div class={`${_class} container ${pt && 'pt'} ${pb && 'pb'}`} {...rest}>
     <slot/>
 </div>
 <style lang="scss">

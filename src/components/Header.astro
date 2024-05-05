@@ -20,7 +20,7 @@ const {t} = useTranslations(Astro.url);
 <header>
     <Container pt pb>
         <Flex direction={StyleFlexDirectionEnum.ROW} alignItems={StyleAlignItemsEnum.CENTER} gap={StyleSPEnum.SP64}>
-            <Image src={ImageOfMe} alt={t('header.imageAlt')}/>
+            <Image src={ImageOfMe} alt={t('header.imageAlt')} loading="eagle"/>
             <Flex direction={StyleFlexDirectionEnum.COLUMN}>
                 <Title size="h1">
                     Jaime Gómez Cimarro
@@ -31,7 +31,7 @@ const {t} = useTranslations(Astro.url);
                         {t('header.fullstack')}
                     </Text>
                     <Box pl={StyleSPEnum.SP16} pr={StyleSPEnum.SP16}>
-                        <Image style={{color: 'pink'}} width="30" src={MapMarker} alt={t('header.mapMarker')}/>
+                        <Image style={{color: 'pink'}} width="30" src={MapMarker} alt={t('header.mapMarker')} loading="eagle"/>
                     </Box>
                     <Text as="h2" fontSize={StyleFSEnum.FS32}>
                         {t('header.location')}
