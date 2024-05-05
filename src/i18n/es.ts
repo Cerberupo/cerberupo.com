@@ -23,11 +23,17 @@ export const es = {
             11: 'Diciembre',
         }
     },
-    card: {
+    company: {
         leemons: {
-            name: 'LEEMONS',
-            position: 'Full Stack Lead Developer',
-            description: '<p>Creando un SASS para revolucionar el futuro de la educación online.</p> <p>Fuí uno de los desarrolladores principales. Cree un “Trello”, un “google calendar” y un “whatsup” a la velocidad de la luz 🚀</p>'
+            name: 'Leemons Edtech Solutions',
+            project: {
+                leemons: {
+                    name: 'LEEMONS',
+                    position: 'Full Stack Lead Developer',
+                    description: '<p>Creando un SASS para revolucionar el futuro de la educación online.</p> <p>Fuí uno de los desarrolladores principales. Cree un “Trello”, un “google calendar” y un “whatsup” a la velocidad de la luz 🚀</p>'
+
+                }
+            }
         }
     }
 };
