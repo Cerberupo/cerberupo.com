@@ -11,9 +11,11 @@ import Spacer from "../layouts/Spacer.astro";
 import Text from "../layouts/Text.astro";
 import {StyleFSEnum} from "../styles/enums/fs.enum";
 import MapMarker from '../icons/map-marker.svg';
+import Coding from '../images/coding.gif';
 import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
 import Box from "../layouts/Box.astro";
 import P from "../layouts/P.astro";
+import {StyleJustifyContentEnum} from "../styles/enums/justify-content.enum";
 const {t} = useTranslations(Astro.url);
 ---
 
@@ -31,7 +33,8 @@ const {t} = useTranslations(Astro.url);
                         {t('header.fullstack')}
                     </Text>
                     <Box pl={StyleSPEnum.SP16} pr={StyleSPEnum.SP16}>
-                        <Image style={{color: 'pink'}} width="30" src={MapMarker} alt={t('header.mapMarker')} loading="eagle"/>
+                        <Image style={{color: 'pink'}} width="30" src={MapMarker} alt={t('header.mapMarker')}
+                               loading="eagle"/>
                     </Box>
                     <Text as="h2" fontSize={StyleFSEnum.FS32}>
                         {t('header.location')}

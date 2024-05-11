@@ -1,0 +1,58 @@
+---
+import {useTranslations} from "../i18n/utils";
+import Container from "../layouts/Container.astro";
+import {Image} from 'astro:assets';
+import Flex from "../layouts/Flex.astro";
+import {StyleSPEnum} from "../styles/enums/sp.enum";
+import {StyleFlexDirectionEnum} from "../styles/enums/flex-direction.enum";
+import Text from "../layouts/Text.astro";
+import Coding from '../images/coding.gif';
+import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
+import {StyleJustifyContentEnum} from "../styles/enums/justify-content.enum";
+import {StyleFSEnum} from "../styles/enums/fs.enum";
+import Spacer from "../layouts/Spacer.astro";
+import P from "../layouts/P.astro";
+import Box from "../layouts/Box.astro";
+const {t} = useTranslations(Astro.url);
+---
+<section>
+    <Container>
+        <Flex direction={{tabletH: StyleFlexDirectionEnum.COLUMN, default: StyleFlexDirectionEnum.ROW}}
+              justifyContent={StyleJustifyContentEnum.SPACE_BETWEEN}
+              alignItems={StyleAlignItemsEnum.CENTER}
+              gap={{tabletH: StyleSPEnum.SP0, default: StyleSPEnum.SP64}}>
+            <Box pt={StyleSPEnum.SP32} pb={StyleSPEnum.SP32}>
+                <Flex direction={StyleFlexDirectionEnum.COLUMN}>
+                    <Text fontSize={StyleFSEnum.FS20}>
+                        {t('section.coding.title')}
+                    </Text>
+                    <Spacer size={StyleSPEnum.SP16}/>
+                    <P>
+                        <Text fontSize={StyleFSEnum.FS14}>
+                            {t('section.coding.description1')}
+                        </Text>
+                    </P>
+                    <P>
+                        <Text fontSize={StyleFSEnum.FS14}>
+                            {t('section.coding.description2')}
+                        </Text>
+                    </P>
+                </Flex>
+            </Box>
+            <Image src={Coding} alt={t('section.coding.imageAlt')} loading="eagle"/>
+        </Flex>
+    </Container>
+</section>
+<style lang="scss">
+  @import "../styles/vars";
+
+
+  @media all and (max-width: $mediaTabletHorizontal) {
+
+  }
+
+  img {
+    max-width: 400px;
+    max-height: 361px;
+  }
+</style>

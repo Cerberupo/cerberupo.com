@@ -8,12 +8,14 @@ import LeemonsImage from '../images/timeline-leemons.jpg';
 import {TagEnum} from "../enums/tag.enum";
 import Spacer from "../layouts/Spacer.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
+import CodingSection from "../components/CodingSection.astro";
 
 const {t, locale} = useTranslations(Astro.url);
 ---
 
 <Layout title="Cerberupo">
     <Header/>
+    <CodingSection/>
     <Timeline companies={[{
         name: t('company.leemons.name'),
         logo: LeemonsLogo,

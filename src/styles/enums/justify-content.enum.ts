@@ -1,4 +1,5 @@
 export enum StyleJustifyContentEnum {
     CENTER = 'center',
-    START = `start`,
+    START = 'start',
+    SPACE_BETWEEN = 'space-between'
 }

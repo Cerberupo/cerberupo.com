@@ -1,27 +1,83 @@
 ---
+import _ from "lodash";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
+import {getMediaQueryProp} from "../helpers/getMediaQueryProp";
+import type {MediaQuery} from "../interfaces/media-query";
 import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
 import {StyleFlexDirectionEnum} from "../styles/enums/flex-direction.enum";
 import {StyleJustifyContentEnum} from "../styles/enums/justify-content.enum";
+import {getElementMediaQueryData} from "../helpers/getElementMediaQueryData";
 interface Props {
-    alignItems: StyleAlignItemsEnum;
-    justifyContent: StyleJustifyContentEnum;
-    gap: StyleSPEnum;
-    direction: StyleFlexDirectionEnum;
+    alignItems: StyleAlignItemsEnum | MediaQuery<StyleAlignItemsEnum>;
+    justifyContent: StyleJustifyContentEnum | MediaQuery<StyleJustifyContentEnum>;
+    gap: StyleSPEnum | MediaQuery<StyleSPEnum>;
+    direction: StyleFlexDirectionEnum | MediaQuery<StyleFlexDirectionEnum>;
     class: string;
 }
 
 let {alignItems, justifyContent, gap, direction, class: _class, ...rest} = Astro.props;
-if (!alignItems) alignItems = StyleAlignItemsEnum.START;
-if (!justifyContent) justifyContent = StyleJustifyContentEnum.START;
-if (!direction) direction = StyleFlexDirectionEnum.ROW;
-if (!gap) gap = StyleSPEnum.SP0;
 if (!_class) _class = '';
+
+
+gap = getMediaQueryProp(gap, StyleSPEnum.SP0);
+direction = getMediaQueryProp(direction, StyleFlexDirectionEnum.ROW);
+alignItems = getMediaQueryProp(alignItems, StyleAlignItemsEnum.START);
+justifyContent = getMediaQueryProp(justifyContent, StyleJustifyContentEnum.START);
 ---
-<div class={`${_class} flex`} {...rest}>
+<astro-flex class={`${_class} flex`}
+            {...rest}
+            {...getElementMediaQueryData(gap, 'gap')}
+            {...getElementMediaQueryData(direction, 'direction')}
+            {...getElementMediaQueryData(alignItems, 'align-items')}
+            {...getElementMediaQueryData(justifyContent, 'justify-content')}
+            id={_.uniqueId()}
+>
     <slot/>
-</div>
-<style lang="scss" define:vars={{alignItems, justifyContent, gap, direction}}>
+</astro-flex>
+<script>
+    import {MediaQueryEnum} from "../styles/enums/media-query.enum";
+
+    const flexs = [];
+
+    class AstroFlex extends HTMLElement {
+        constructor() {
+            super();
+            flexs.push(this);
+        }
+    }
+
+    customElements.define('astro-flex', AstroFlex);
+
+    function process() {
+        flexs.forEach((el) => {
+            el.style.gap = el.dataset.gapDefault;
+            el.style.alignItems = el.dataset.alignItemsDefault;
+            el.style.flexDirection = el.dataset.directionDefault;
+            el.style.justifyContent = el.dataset.justifyContentDefault;
+            if (window.innerWidth <= MediaQueryEnum.TABLET_HORIZONTAL) {
+                el.style.gap = el.dataset.gapTabletH;
+                el.style.alignItems = el.dataset.alignItemsTabletH;
+                el.style.flexDirection = el.dataset.directionTabletH;
+                el.style.justifyContent = el.dataset.justifyContentTabletH;
+            }
+            if (window.innerWidth <= MediaQueryEnum.TABLET) {
+                el.style.gap = el.dataset.gapTablet;
+                el.style.alignItems = el.dataset.alignItemsTablet;
+                el.style.flexDirection = el.dataset.directionTablet;
+                el.style.justifyContent = el.dataset.justifyContentTablet;
+            }
+        })
+    }
+
+    window.addEventListener("resize", process);
+    process();
+</script>
+<style lang="scss" define:vars={{
+    alignItems: alignItems.default,
+    justifyContent: justifyContent.default,
+    gap: gap.default,
+    direction: direction.default
+}}>
   @import "../styles/vars";
 
   .flex {
