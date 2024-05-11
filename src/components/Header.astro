@@ -5,77 +5,51 @@ import {Image} from 'astro:assets';
 import ImageOfMe from '../images/me.jpg';
 import Flex from "../layouts/Flex.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
-import Title from "../layouts/Title.astro";
 import {StyleFlexDirectionEnum} from "../styles/enums/flex-direction.enum";
 import Spacer from "../layouts/Spacer.astro";
 import Text from "../layouts/Text.astro";
 import {StyleFSEnum} from "../styles/enums/fs.enum";
-import MapMarker from '../icons/map-marker.svg';
-import Coding from '../images/coding.gif';
 import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
 import Box from "../layouts/Box.astro";
-import P from "../layouts/P.astro";
-import {StyleJustifyContentEnum} from "../styles/enums/justify-content.enum";
+import {StyleFWEnum} from "../styles/enums/fw.enum";
+import Tag from "./Tag.astro";
+import {TagEnum} from "../enums/tag.enum";
 const {t} = useTranslations(Astro.url);
 ---
 
 <header>
     <Container pt pb>
-        <Flex direction={StyleFlexDirectionEnum.ROW} alignItems={StyleAlignItemsEnum.CENTER} gap={StyleSPEnum.SP64}>
+        <Flex direction={{tabletH: StyleFlexDirectionEnum.COLUMN, default: StyleFlexDirectionEnum.ROW}}
+              alignItems={StyleAlignItemsEnum.CENTER}
+              gap={{default: StyleSPEnum.SP64, mobile: StyleSPEnum.SP32}}>
             <Image src={ImageOfMe} alt={t('header.imageAlt')} loading="eagle"/>
-            <Flex direction={StyleFlexDirectionEnum.COLUMN}>
-                <Title size="h1">
+            <Box>
+                <Text as="h1" fontSize={{default: StyleFSEnum.FS32, mobile: StyleFSEnum.FS24}}
+                      fontWeight={StyleFWEnum.MEDIUM}>
                     Jaime Gómez Cimarro
-                </Title>
+                </Text>
                 <Spacer size={StyleSPEnum.SP16}/>
                 <Flex direction={StyleFlexDirectionEnum.ROW}>
-                    <Text as="h2" fontSize={StyleFSEnum.FS32}>
+                    <Text as="h2" fontSize={StyleFSEnum.FS20}>
                         {t('header.fullstack')}
                     </Text>
-                    <Box pl={StyleSPEnum.SP16} pr={StyleSPEnum.SP16}>
-                        <Image style={{color: 'pink'}} width="30" src={MapMarker} alt={t('header.mapMarker')}
-                               loading="eagle"/>
-                    </Box>
-                    <Text as="h2" fontSize={StyleFSEnum.FS32}>
-                        {t('header.location')}
-                    </Text>
                 </Flex>
-                <Text>
-                    <P>
-                        Durante los últimos 8 años, me he dedicado apasionadamente al desarrollo de software, explorando
-                        diversas tecnologías y manteniéndome al día con las tendencias del sector. Mi viaje comenzó con
-                        la
-                        obtención de un título en grado medio y superior, donde adquirí habilidades en HTML, CSS y
-                        JavaScript para el desarrollo frontend, y Java con Oracle para bases de datos. Desde entonces,
-                        he
-                        experimentado una evolución significativa en mi trayectoria profesional.
-                    </P>
-                    <P>
-                        Inicié mi carrera laboral como programador PHP con MySQL, utilizando WordPress como plataforma,
-                        sin
-                        tener experiencia previa en el lenguaje. Posteriormente, mi curiosidad me llevó a adentrarme en
-                        el
-                        mundo de los frameworks, donde trabajé con Angular 1 y más tarde con Angular 2+, para el
-                        desarrollo frontend y utilizando Node.js junto con MongoDB para el backend.
-                    </P>
-                    <P>
-                        Con el tiempo, mi enfoque se ha desplazado hacia tecnologías más modernas, y en la actualidad,
-                        me
-                        encuentro inmerso en proyectos que emplean React para el frontend y Node.js con MongoDB o MySQL
-                        para
-                        el backend. Este recorrido diverso me ha proporcionado una amplia experiencia y habilidades
-                        técnicas
-                        que me han permitido adaptarme con éxito a las demandas cambiantes del campo del desarrollo de
-                        software.
-                    </P>
-                    <P>
-                        Si estás interesado en conocer más detalles sobre las tecnologias con las que he trabajado, mas
-                        abajo
-                        puedes ver los proyectos con las tecnologías que he utilizado.
-                    </P>
+                <Spacer size={StyleSPEnum.SP16}/>
+                <Text fontSize={StyleFSEnum.FS14}>
+                    {t('header.description')}
                 </Text>
-            </Flex>
+                <Spacer size={StyleSPEnum.SP8}/>
+                <Text fontSize={StyleFSEnum.FS16}>
+                    {t('header.preferredTechnologies')}
+                </Text>
+                <Spacer size={StyleSPEnum.SP8}/>
+                <Tag name={TagEnum.REACT}/>
+                <Tag name={TagEnum.NODE_JS}/>
+                <Tag name={TagEnum.MONGO_DB}/>
+                <Tag name={TagEnum.AWS}/>
+            </Box>
         </Flex>
+
     </Container>
 </header>
 
@@ -89,5 +63,6 @@ const {t} = useTranslations(Astro.url);
   img {
     max-width: 340px;
     max-height: 447px;
+    border-radius: 10px;
   }
 </style>

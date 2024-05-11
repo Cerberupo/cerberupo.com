@@ -6,7 +6,7 @@ import {setMissingMediaQuery} from "./setMissingMediaQuery.ts";
 
 export function getMediaQueryProp(value: any, _default: any): MediaQuery<any> {
     if (!value) value = _default;
-    if (_.isString(value)) {
+    if (!_.isObject(value)) {
         value = getMediaQueryDefaults(value);
     }
     return setMissingMediaQuery(value as MediaQuery<StyleSPEnum>, _default);

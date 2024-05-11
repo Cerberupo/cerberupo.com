@@ -9,6 +9,7 @@ import {StyleSPEnum} from "../styles/enums/sp.enum";
 import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
 import Spacer from "../layouts/Spacer.astro";
 import Tag from "./Tag.astro";
+import Box from "../layouts/Box.astro";
 interface Props extends TimelineCard {
 }
 
@@ -24,11 +25,15 @@ const {t} = useTranslations(Astro.url);
         <Image class="logo" src={logo} alt={`${name} logo`} loading="eagle"/>
     </Flex>
     <Spacer size={StyleSPEnum.SP8}/>
-    <Text fontSize={StyleFSEnum.FS24}>{position}</Text>
+    <Box>
+        <Text fontSize={StyleFSEnum.FS24}>{position}</Text>
+    </Box>
     <Spacer size={StyleSPEnum.SP16}/>
-    <Text fontSize={StyleFSEnum.FS14}>
-        <Fragment set:html={description}/>
-    </Text>
+    <Box>
+        <Text fontSize={StyleFSEnum.FS14}>
+            <Fragment set:html={description}/>
+        </Text>
+    </Box>
     <Spacer size={StyleSPEnum.SP8}/>
     {tags.map((tag) =>
             <Tag name={tag}/>)}

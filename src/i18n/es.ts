@@ -4,7 +4,8 @@ export const es = {
         fullstack: 'Desarrollador Full Stack',
         mapMarker: 'Marcador mapa',
         location: 'España, Toledo',
-        description: 'Desarrollador Full Stack',
+        preferredTechnologies: 'Tecnologias preferidas',
+        description: 'Con una amplia experiencia en el desarrollo de software, soy un apasionado de la creación de soluciones innovadoras y efectivas. He trabajado en diversos proyectos donde he aplicado mis habilidades técnicas y mi capacidad para resolver problemas de manera creativa. Mi trayectoria me ha brindado una comprensión profunda de las tecnologías actuales y una sólida base en las mejores prácticas de desarrollo. Estoy comprometido con la excelencia en mi trabajo y siempre busco nuevas oportunidades para crecer profesionalmente y contribuir al éxito de los proyectos en los que participo.',
     },
     timeline: {
         currently: 'Actualmente',
@@ -30,7 +31,7 @@ export const es = {
                 leemons: {
                     name: 'LEEMONS',
                     position: 'Full Stack Lead Developer',
-                    description: '<p>Creando un SASS para revolucionar el futuro de la educación online.</p> <p>Fuí uno de los desarrolladores principales. Cree un “Trello”, un “google calendar” y un “whatsup” a la velocidad de la luz 🚀</p>'
+                    description: 'Creando un SASS para revolucionar el futuro de la educación online.<br/>Fuí uno de los desarrolladores principales. Cree un “Trello”, un “google calendar” y un “whatsup” a la velocidad de la luz 🚀'
 
                 }
             }

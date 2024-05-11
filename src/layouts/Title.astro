@@ -8,9 +8,9 @@ interface Props {
 let {size, ...rest} = Astro.props;
 if (!size) size = 'h2';
 const values = {
-    h1: StyleFSEnum.FS48,
-    h2: StyleFSEnum.FS32,
-    h3: StyleFSEnum.FS24
+    h1: StyleFSEnum.FS32,
+    h2: StyleFSEnum.FS24,
+    h3: StyleFSEnum.FS20
 };
 const styleVars = {size: values[size]}
 ---

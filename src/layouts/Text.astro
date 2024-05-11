@@ -1,27 +1,76 @@
 ---
+import type {MediaQuery} from "../interfaces/media-query";
+import {getMediaQueryProp} from "../helpers/getMediaQueryProp";
 import {StyleFSEnum} from "../styles/enums/fs.enum";
 import {StyleFWEnum} from "../styles/enums/fw.enum";
 import Box from "./Box.astro";
 import {AsEnum} from "../enums/as.enum";
+import {getElementMediaQueryData} from "../helpers/getElementMediaQueryData";
 interface Props {
     as: AsEnum;
     class: string;
-    fontSize: StyleFSEnum;
-    fontWeight: StyleFWEnum;
+    fontSize: StyleFSEnum | MediaQuery<StyleFSEnum>;
+    fontWeight: StyleFWEnum | MediaQuery<StyleFWEnum>;
     styleVars: any;
 }
 
 let {fontSize, fontWeight, styleVars: styles, class: _class, as, ...rest} = Astro.props;
 if (!as) as = AsEnum.SPAN;
-if (!fontSize) fontSize = StyleFSEnum.FS14;
-if (!fontWeight) fontWeight = StyleFWEnum.REGULAR;
 if (!styles) styles = {};
-const styleVars = {...styles, fontSize, fontWeight};
----
-<Box as={as} class={`${_class} text`} {...rest} styleVars={styleVars}>
-    <slot/>
-</Box>
 
+fontSize = getMediaQueryProp(fontSize, StyleFSEnum.FS14);
+fontWeight = getMediaQueryProp(fontWeight, StyleFWEnum.REGULAR);
+
+const styleVars = {...styles, fontSize: fontSize.default, fontWeight: fontWeight.default};
+---
+<astro-text class={`${_class} text`}
+            {...getElementMediaQueryData(fontSize, 'font-size')}
+            {...getElementMediaQueryData(fontWeight, 'font-weight')}>
+    <Box as={as} {...rest} styleVars={styleVars}>
+        <slot/>
+    </Box>
+</astro-text>
+
+<script>
+    import {MediaQueryEnum} from "../styles/enums/media-query.enum";
+
+    const texts = [];
+
+    class AstroText extends HTMLElement {
+        constructor() {
+            super();
+            texts.push(this);
+        }
+    }
+
+    customElements.define('astro-text', AstroText);
+
+    function process() {
+        texts.forEach((el) => {
+            el.style.fontSize = el.dataset.fontSizeDefault;
+            el.style.lineHeight = el.dataset.fontSizeDefault;
+            el.style.fontWeight = el.dataset.fontWeightDefault;
+            if (window.innerWidth <= MediaQueryEnum.TABLET_HORIZONTAL) {
+                el.style.fontSize = el.dataset.fontSizeTabletH;
+                el.style.lineHeight = el.dataset.fontSizeTabletH;
+                el.style.fontWeight = el.dataset.fontWeightTabletH;
+            }
+            if (window.innerWidth <= MediaQueryEnum.TABLET) {
+                el.style.fontSize = el.dataset.fontSizeTablet;
+                el.style.lineHeight = el.dataset.fontSizeTablet;
+                el.style.fontWeight = el.dataset.fontWeightTablet;
+            }
+            if (window.innerWidth <= MediaQueryEnum.MOBILE) {
+                el.style.fontSize = el.dataset.fontSizeMobile;
+                el.style.lineHeight = el.dataset.fontSizeMobile;
+                el.style.fontWeight = el.dataset.fontWeightMobile;
+            }
+        })
+    }
+
+    window.addEventListener("resize", process);
+    process();
+</script>
 <style lang="scss" define:vars={styleVars}>
   @import "../styles/vars";
 
@@ -29,5 +78,11 @@ const styleVars = {...styles, fontSize, fontWeight};
     font-size: var(--fontSize);
     line-height: var(--fontSize);
     font-weight: var(--fontWeight);
+
+    :global(*) {
+      font-size: inherit;
+      line-height: inherit;
+      font-weight: inherit;
+    }
   }
 </style>
