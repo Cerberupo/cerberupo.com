@@ -1,4 +1,6 @@
 export enum StyleFlexDirectionEnum {
     ROW = 'row',
-    COLUMN = `column`,
+    ROW_REVERSE = 'row-reverse',
+    COLUMN = 'column',
+    COLUMN_REVERSE = 'column-reverse',
 }

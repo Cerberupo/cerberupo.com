@@ -9,6 +9,7 @@ import {TagEnum} from "../enums/tag.enum";
 import Spacer from "../layouts/Spacer.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
 import CodingSection from "../components/CodingSection.astro";
+import CareerSection from "../components/CareerSection.astro";
 
 const {t, locale} = useTranslations(Astro.url);
 ---
@@ -16,6 +17,7 @@ const {t, locale} = useTranslations(Astro.url);
 <Layout title="Cerberupo">
     <Header/>
     <CodingSection/>
+    <CareerSection/>
     <Timeline companies={[{
         name: t('company.leemons.name'),
         logo: LeemonsLogo,

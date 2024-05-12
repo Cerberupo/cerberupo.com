@@ -42,7 +42,7 @@ const {t} = useTranslations(Astro.url);
                 <Text fontSize={StyleFSEnum.FS16}>
                     {t('header.preferredTechnologies')}
                 </Text>
-                <Spacer size={StyleSPEnum.SP8}/>
+                <Spacer size={StyleSPEnum.SP4}/>
                 <Tag name={TagEnum.REACT}/>
                 <Tag name={TagEnum.NODE_JS}/>
                 <Tag name={TagEnum.MONGO_DB}/>
@@ -58,11 +58,16 @@ const {t} = useTranslations(Astro.url);
 
   header {
     background-color: $headerBg;
+    z-index: 2;
+    position: relative;
   }
 
   img {
     max-width: 340px;
     max-height: 447px;
     border-radius: 10px;
+    @media all and (max-width: $mobileSmall) {
+      max-width: 100%;
+    }
   }
 </style>
