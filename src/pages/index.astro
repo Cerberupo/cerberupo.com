@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from "../components/Header.astro";
 import Timeline from "../components/Timeline.astro";
 import LeemonsLogo from '../images/leemons.png';
+import DigaLogo from '../images/diga.png';
 import LeemonsImage from '../images/timeline-leemons.jpg';
 import {TagEnum} from "../enums/tag.enum";
 import Spacer from "../layouts/Spacer.astro";
@@ -18,64 +19,66 @@ const {t, locale} = useTranslations(Astro.url);
     <Header/>
     <CodingSection/>
     <CareerSection/>
-    <Timeline companies={[{
-        name: t('company.leemons.name'),
-        logo: LeemonsLogo,
-        side: 'left',
-        projects: [
-            {
-                endDate: null,
-                startDate: new Date('06/01/2021'),
-                color: '#B1E400',
-                proyectLogo: LeemonsLogo,
-                proyectImage: LeemonsImage,
-                proyectName: t('company.leemons.project.leemons.name'),
-                proyectCardProps: {
-                    name: t('company.leemons.project.leemons.name'),
-                    position: t('company.leemons.project.leemons.position'),
-                    logo: LeemonsLogo,
-                    description: t('company.leemons.project.leemons.description'),
-                    tags: [TagEnum.MONGO_DB]
+    <Timeline companies={[
+        {
+            name: t('company.leemons.name'),
+            logo: LeemonsLogo,
+            side: 'left',
+            projects: [
+                {
+                    endDate: new Date('02/01/2024'),
+                    startDate: new Date('06/01/2021'),
+                    color: '#B1E400',
+                    proyectLogo: LeemonsLogo,
+                    proyectImage: LeemonsImage,
+                    proyectName: t('company.leemons.project.leemons.name'),
+                    proyectCardProps: {
+                        name: t('company.leemons.project.leemons.name'),
+                        position: t('company.leemons.project.leemons.position'),
+                        logo: LeemonsLogo,
+                        description: t('company.leemons.project.leemons.description'),
+                        tags: [TagEnum.MONGO_DB]
+                    }
                 }
-            }
-        ]
-    }, {
-        name: t('company.leemons.name'),
-        logo: LeemonsLogo,
-        side: 'right',
-        projects: [
-            {
-                endDate: new Date('06/01/2021'),
-                startDate: new Date('06/01/2020'),
-                color: '#B1E400',
-                proyectLogo: LeemonsLogo,
-                proyectImage: LeemonsImage,
-                proyectName: t('company.leemons.project.leemons.name'),
-                proyectCardProps: {
-                    name: t('company.leemons.project.leemons.name'),
-                    position: t('company.leemons.project.leemons.position'),
-                    logo: LeemonsLogo,
-                    description: t('company.leemons.project.leemons.description'),
-                    tags: [TagEnum.MONGO_DB]
+            ]
+        }, {
+            name: t('company.diga.name'),
+            logo: DigaLogo,
+            side: 'right',
+            projects: [
+                {
+                    endDate: new Date('06/01/2021'),
+                    startDate: new Date('06/01/2020'),
+                    color: '#B1E400',
+                    proyectLogo: LeemonsLogo,
+                    proyectImage: LeemonsImage,
+                    proyectName: t('company.leemons.project.leemons.name'),
+                    proyectCardProps: {
+                        name: t('company.leemons.project.leemons.name'),
+                        position: t('company.leemons.project.leemons.position'),
+                        logo: LeemonsLogo,
+                        description: t('company.leemons.project.leemons.description'),
+                        tags: [TagEnum.MONGO_DB]
+                    }
+                },
+                {
+                    endDate: new Date('06/01/2020'),
+                    startDate: new Date('06/01/2018'),
+                    color: '#B1E400',
+                    proyectLogo: LeemonsLogo,
+                    proyectImage: LeemonsImage,
+                    proyectName: t('company.leemons.project.leemons.name'),
+                    proyectCardProps: {
+                        name: t('company.leemons.project.leemons.name'),
+                        position: t('company.leemons.project.leemons.position'),
+                        logo: LeemonsLogo,
+                        description: t('company.leemons.project.leemons.description'),
+                        tags: [TagEnum.MONGO_DB]
+                    }
                 }
-            },
-            {
-                endDate: new Date('06/01/2020'),
-                startDate: new Date('06/01/2018'),
-                color: '#B1E400',
-                proyectLogo: LeemonsLogo,
-                proyectImage: LeemonsImage,
-                proyectName: t('company.leemons.project.leemons.name'),
-                proyectCardProps: {
-                    name: t('company.leemons.project.leemons.name'),
-                    position: t('company.leemons.project.leemons.position'),
-                    logo: LeemonsLogo,
-                    description: t('company.leemons.project.leemons.description'),
-                    tags: [TagEnum.MONGO_DB]
-                }
-            }
-        ]
-    }]}/>
+            ]
+        },
+    ]}/>
     <Spacer size={StyleSPEnum.SP128}/>
     <Spacer size={StyleSPEnum.SP128}/>
     <Spacer size={StyleSPEnum.SP128}/>

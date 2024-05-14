@@ -60,6 +60,37 @@ const {t} = useTranslations(Astro.url);
     background-color: $headerBg;
     z-index: 2;
     position: relative;
+
+    /*
+    &:after {
+      display: block;
+      content: " ";
+      background-color: $headerDecoration1;
+      width: 1000px;
+      height: 400px;
+      position: absolute;
+      right: -500px;
+      top: -200px;
+      transform: rotate(55deg);
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+    &:before {
+      display: block;
+      content: " ";
+      background-color: $headerDecoration2;
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      right: -225px;
+      top: 50px;
+      transform: rotate(-45deg) skew(45deg);
+      z-index: -1;
+      opacity: 0.3;
+    }
+
+     */
   }
 
   img {

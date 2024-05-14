@@ -35,6 +35,9 @@ export const es = {
 
                 }
             }
+        },
+        diga: {
+            name: 'Diga33!'
         }
     },
     section: {

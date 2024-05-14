@@ -24,13 +24,13 @@ function getDate(date: Date | null) {
 ---
 
 <section>
-    <Spacer size={StyleSPEnum.SP128}/>
+    <Spacer size={StyleSPEnum.SP64}/>
     <Container class="container">
         {companies.map((company) =>
                 <Box class="container-container">
                     <Box p={StyleSPEnum.SP8} class="company-info">
                         <Text fontSize={StyleFSEnum.FS14} fontWeight={StyleFWEnum.LIGHT}>
-                            {getDate(company.projects[0].startDate)}
+                            {getDate(company.projects[0].endDate)}
                         </Text>
                         <Spacer size={StyleSPEnum.SP8}/>
                         <Text fontSize={StyleFSEnum.FS16} fontWeight={StyleFWEnum.REGULAR}>
@@ -42,7 +42,9 @@ function getDate(date: Date | null) {
                         <Spacer size={StyleSPEnum.SP4}/>
                     </Box>
                     {company.projects.map((project) =>
-                            <Flex>
+                            <Flex class="company-proyect"
+                                  data-date-start={project.startDate.toString()}
+                                  data-date-end={project.endDate.toString()}>
                                 {company.side === 'right' &&
                                         <>
                                             <Box class="timeline-image-container">
@@ -82,20 +84,76 @@ function getDate(date: Date | null) {
 </section>
 
 <script>
+    import {useTranslations} from "../i18n/utils";
+
+    const {t} = useTranslations(window.location);
     const containers: HTMLElement[] = document.querySelectorAll('.container-container') as HTMLElement[];
     const companyInfos: HTMLElement[] = document.querySelectorAll('.company-info') as HTMLElement[];
 
     document.addEventListener("scroll", (event) => {
+        process();
+    });
+    process();
+
+    function getDatePerBetween(start: Date, end: Date, per: number) {
+        if (per > 1) return start;
+        if (per < 0) return end;
+        const diff = (end.getTime() - start.getTime()) * per;
+        return new Date(end.getTime() - diff);
+    }
+
+
+    function process() {
         const windowMiddle = window.innerHeight / 2;
         containers.forEach((container, index) => {
             const companyInfo: HTMLElement = companyInfos[index];
-            const diff = container.getBoundingClientRect().top - windowMiddle;
-            if (diff < 0) {
-                companyInfo.style.top = Math.abs(diff) + 'px';
+            const companyHeight = companyInfo.getBoundingClientRect().height;
+            const rect = container.getBoundingClientRect();
+            let diff = rect.top - windowMiddle - companyHeight / 2;
+            let limit = rect.top + rect.height;
+            let diff2 = limit - windowMiddle + companyHeight / 2;
+            let top;
+            if (diff < 0 && diff2 >= 0) {
+                top = Math.abs(diff) + 'px';
+                const opa = Math.abs((((diff) / (companyHeight)) * 100));
+                companyInfo.style.opacity = (opa < 20 ? 20 : opa) + '%'
+            } else if (diff > 0) {
+                top = '0px';
+                companyInfo.style.opacity = '20%';
+            } else if (diff2 <= 0) {
+                top = rect.height + companyHeight + 'px';
+                companyInfo.style.opacity = '35%';
             }
-        })
-    });
+            companyInfo.style.top = top;
+            if (diff < 0 && diff2 >= 0) {
+                if (limit - windowMiddle < 0) {
+                    const curr = Math.abs(limit - windowMiddle);
+                    const per = Math.abs((((curr) / (companyHeight)) * 100) - 100);
+                    companyInfo.style.opacity = (per < 35 ? 35 : per) + '%';
+                }
+            }
 
+
+            const projects = container.querySelectorAll('.company-proyect');
+            const infoRect = companyInfo.getBoundingClientRect();
+            projects.forEach((proyect) => {
+                const projectRect = proyect.getBoundingClientRect();
+                const projectStart = new Date(proyect.getAttribute('data-date-start'));
+                const projectEnd = new Date(proyect.getAttribute('data-date-end'));
+
+                const init = projectRect.top;
+                const finish = projectRect.top + projectRect.height;
+                const top = infoRect.top + infoRect.height / 2;
+                if (top > init) {
+                    const per = ((top - init) / (finish - init))
+                    const perDate = getDatePerBetween(projectStart, projectEnd, per);
+                    const date = companyInfo.querySelector('span');
+                    date.innerHTML = t(`timeline.months.${perDate.getMonth()}`) + ' ' + perDate.getFullYear();
+                }
+            })
+
+        })
+    }
 </script>
 
 <style lang="scss">
