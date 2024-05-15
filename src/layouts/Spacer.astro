@@ -1,21 +1,61 @@
 ---
+import {getMediaQueryProp} from "../helpers/getMediaQueryProp";
+import type {MediaQuery} from "../interfaces/media-query";
 import {AsEnum} from "../enums/as.enum";
 import Box from "./Box.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
+import {getElementMediaQueryData} from "../helpers/getElementMediaQueryData";
 interface Props {
-    size: StyleSPEnum;
+    size: StyleSPEnum | MediaQuery<StyleSPEnum>;
 }
 
-let {size} = Astro.props;
-if (!size) size = StyleSPEnum.SP16;
-const styleVars = {size};
+let {size, ...rest} = Astro.props;
+size = getMediaQueryProp(size, StyleSPEnum.SP16);
+const styleVars = {size: size.default};
 ---
-<Box as={AsEnum.DIV} styleVars={styleVars} class="spacer"/>
+<astro-spacer {...rest} {...getElementMediaQueryData(size, 'size')} class="spacer"/>
+
+<script>
+    import {MediaQueryEnum} from "../styles/enums/media-query.enum";
+
+    const spacers = [];
+
+    class AstroSpacer extends HTMLElement {
+        constructor() {
+            super();
+            spacers.push(this);
+        }
+    }
+
+    customElements.define('astro-spacer', AstroSpacer);
+
+    function process() {
+        spacers.forEach((el) => {
+            el.style.height = el.dataset.sizeDefault;
+            if (window.innerWidth <= MediaQueryEnum.TABLET_HORIZONTAL) {
+                el.style.height = el.dataset.sizeTabletH;
+            }
+            if (window.innerWidth <= MediaQueryEnum.TABLET) {
+                el.style.height = el.dataset.sizeTablet;
+            }
+            if (window.innerWidth <= MediaQueryEnum.MOBILE) {
+                el.style.height = el.dataset.sizeMobile;
+            }
+            if (window.innerWidth <= MediaQueryEnum.MOBILE_SMALL) {
+                el.style.height = el.dataset.sizeMobileS;
+            }
+        })
+    }
+
+    window.addEventListener("resize", process);
+    process();
+</script>
 
 <style lang="scss" define:vars={styleVars}>
   .spacer {
     height: var(--size);
     width: 100%;
+    display: block;
     clear: both;
   }
 </style>

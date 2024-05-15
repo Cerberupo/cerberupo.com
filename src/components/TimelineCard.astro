@@ -26,7 +26,7 @@ const {t} = useTranslations(Astro.url);
     </Flex>
     <Spacer size={StyleSPEnum.SP8}/>
     <Box>
-        <Text fontSize={StyleFSEnum.FS24}>{position}</Text>
+        <Text fontSize={{default: StyleFSEnum.FS24, mobile: StyleFSEnum.FS16}}>{position}</Text>
     </Box>
     <Spacer size={StyleSPEnum.SP16}/>
     <Box>

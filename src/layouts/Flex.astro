@@ -72,6 +72,12 @@ justifyContent = getMediaQueryProp(justifyContent, StyleJustifyContentEnum.START
                 el.style.flexDirection = el.dataset.directionMobile;
                 el.style.justifyContent = el.dataset.justifyContentMobile;
             }
+            if (window.innerWidth <= MediaQueryEnum.MOBILE_SMALL) {
+                el.style.gap = el.dataset.gapMobileS;
+                el.style.alignItems = el.dataset.alignItemsMobileS;
+                el.style.flexDirection = el.dataset.directionMobileS;
+                el.style.justifyContent = el.dataset.justifyContentMobileS;
+            }
         })
     }
 

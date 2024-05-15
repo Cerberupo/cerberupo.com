@@ -24,7 +24,7 @@ function getDate(date: Date | null) {
 ---
 
 <section>
-    <Spacer size={StyleSPEnum.SP64}/>
+    <Spacer size={{default: StyleSPEnum.SP64, mobileS: StyleSPEnum.SP32}}/>
     <Container class="container">
         {companies.map((company) =>
                 <Box class="container-container">
@@ -42,7 +42,7 @@ function getDate(date: Date | null) {
                         <Spacer size={StyleSPEnum.SP4}/>
                     </Box>
                     {company.projects.map((project) =>
-                            <Flex class="company-proyect"
+                            <Flex class={`company-proyect ${company.side}`}
                                   data-date-start={project.startDate.toString()}
                                   data-date-end={project.endDate.toString()}>
                                 {company.side === 'right' &&
@@ -106,6 +106,7 @@ function getDate(date: Date | null) {
     function process() {
         const windowMiddle = window.innerHeight / 2;
         containers.forEach((container, index) => {
+            const nextContainer = containers[index + 1];
             const companyInfo: HTMLElement = companyInfos[index];
             const companyHeight = companyInfo.getBoundingClientRect().height;
             const rect = container.getBoundingClientRect();
@@ -152,6 +153,10 @@ function getDate(date: Date | null) {
                 }
             })
 
+            if (nextContainer) {
+                nextContainer.style.marginTop = companyHeight + 'px';
+            }
+
         })
     }
 </script>
@@ -160,6 +165,8 @@ function getDate(date: Date | null) {
   @import "../styles/vars";
 
   $centerWidth: 230px;
+  $centerWidth1: 175px;
+  $centerWidth2: 65px;
 
   .company-image {
     max-width: 44px;
@@ -179,6 +186,7 @@ function getDate(date: Date | null) {
     text-align: center;
     background-color: $white;
     transform: translateY(-100%);
+    z-index: 9;
   }
 
   .timeline-image-container {
@@ -196,14 +204,90 @@ function getDate(date: Date | null) {
     flex: 1;
   }
 
-  .project-line-container {
-    width: $centerWidth;
-    align-self: stretch;
+  .company-proyect {
+    position: relative;
+    padding-top: $sp16;
+    padding-bottom: $sp16;
 
-    .project-line {
-      width: 4px;
-      height: 100%;
-      border-radius: 5px;
+    .project-line-container {
+      width: $centerWidth;
+      align-self: stretch;
+
+      .project-line {
+        width: 4px;
+        height: 100%;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  @media all and (max-width: $mediaTabletHorizontal) {
+    .company-proyect {
+      flex-direction: column-reverse !important;
+      padding-left: $centerWidth;
+
+      &.right {
+        flex-direction: column !important;
+      }
+
+      .timeline-image-container {
+        margin-bottom: $sp32;
+      }
+
+      .project-line-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        z-index: 1;
+      }
+    }
+    .company-info {
+      left: 0;
+    }
+  }
+
+  @media all and (max-width: $mobile) {
+    .company-proyect {
+      padding-left: $centerWidth1;
+
+      .timeline-image-container {
+        margin-bottom: $sp16;
+      }
+
+      .project-line-container {
+        width: $centerWidth1;
+      }
+
+    }
+    .company-info {
+      left: 0;
+      width: $centerWidth1;
+    }
+
+  }
+
+  @media all and (max-width: $mobileSmall) {
+    .company-proyect {
+      padding-left: $centerWidth2;
+
+
+      .project-line-container {
+        width: $centerWidth2;
+      }
+
+    }
+    .company-info {
+      width: $centerWidth2;
+
+      span, .spacer {
+        display: none;
+      }
+    }
+    .container-container {
+      left: -$sp16;
+      width: calc(100% + $sp16);
+      margin-top: $sp64;
     }
   }
 </style>

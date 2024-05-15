@@ -65,6 +65,11 @@ const styleVars = {...styles, fontSize: fontSize.default, fontWeight: fontWeight
                 el.style.lineHeight = el.dataset.fontSizeMobile;
                 el.style.fontWeight = el.dataset.fontWeightMobile;
             }
+            if (window.innerWidth <= MediaQueryEnum.MOBILE_SMALL) {
+                el.style.fontSize = el.dataset.fontSizeMobileS;
+                el.style.lineHeight = el.dataset.fontSizeMobileS;
+                el.style.fontWeight = el.dataset.fontWeightMobileS;
+            }
         })
     }
 
