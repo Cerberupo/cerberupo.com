@@ -2,7 +2,7 @@
 import {useTranslations} from "../i18n/utils";
 import Container from "../layouts/Container.astro";
 import {Image} from 'astro:assets';
-import ImageOfMe from '../images/me.jpg';
+import ImageOfMe from '../images/me.webp';
 import Flex from "../layouts/Flex.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
 import {StyleFlexDirectionEnum} from "../styles/enums/flex-direction.enum";
@@ -14,6 +14,7 @@ import Box from "../layouts/Box.astro";
 import {StyleFWEnum} from "../styles/enums/fw.enum";
 import Tag from "./Tag.astro";
 import {TagEnum} from "../enums/tag.enum";
+import {StyleFlexWrapEnum} from "../styles/enums/flex-wrap.enum";
 const {t} = useTranslations(Astro.url);
 ---
 
@@ -43,10 +44,12 @@ const {t} = useTranslations(Astro.url);
                     {t('header.preferredTechnologies')}
                 </Text>
                 <Spacer size={StyleSPEnum.SP4}/>
-                <Tag name={TagEnum.REACT}/>
-                <Tag name={TagEnum.NODE_JS}/>
-                <Tag name={TagEnum.MONGO_DB}/>
-                <Tag name={TagEnum.AWS}/>
+                <Flex wrap={StyleFlexWrapEnum.WRAP} gap={StyleSPEnum.SP4}>
+                    <Tag name={TagEnum.REACT}/>
+                    <Tag name={TagEnum.NODE_JS}/>
+                    <Tag name={TagEnum.MONGO_DB}/>
+                    <Tag name={TagEnum.AWS}/>
+                </Flex>
             </Box>
         </Flex>
 
@@ -60,37 +63,6 @@ const {t} = useTranslations(Astro.url);
     background-color: $headerBg;
     z-index: 2;
     position: relative;
-
-    /*
-    &:after {
-      display: block;
-      content: " ";
-      background-color: $headerDecoration1;
-      width: 1000px;
-      height: 400px;
-      position: absolute;
-      right: -500px;
-      top: -200px;
-      transform: rotate(55deg);
-      z-index: -1;
-      opacity: 0.3;
-    }
-
-    &:before {
-      display: block;
-      content: " ";
-      background-color: $headerDecoration2;
-      width: 200px;
-      height: 200px;
-      position: absolute;
-      right: -225px;
-      top: 50px;
-      transform: rotate(-45deg) skew(45deg);
-      z-index: -1;
-      opacity: 0.3;
-    }
-
-     */
   }
 
   img {

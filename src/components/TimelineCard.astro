@@ -10,19 +10,48 @@ import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
 import Spacer from "../layouts/Spacer.astro";
 import Tag from "./Tag.astro";
 import Box from "../layouts/Box.astro";
+import Button from "../layouts/Button.astro";
+import {ButtonTypeEnum} from "../styles/enums/button-type.enum";
+import {StyleFlexWrapEnum} from "../styles/enums/flex-wrap.enum";
+import TimelineModal from "./TimelineModal.astro";
+import _ from "lodash";
 interface Props extends TimelineCard {
 }
 
-const {name, position, logo, description, tags} = Astro.props;
+const {name, position, logo, description, tags, endDate, startDate, current} = Astro.props;
+
+function monthDiff() {
+    const months = endDate.getMonth() - startDate.getMonth() +
+        (12 * (endDate.getFullYear() - startDate.getFullYear()));
+
+    if (months > 12) {
+        const years = Math.floor(months / 12);
+        const y_months = months - (years * 12);
+        const ys = years === 1 ? 'year' : 'years';
+        const ms = y_months === 1 ? 'month' : 'months';
+        return t(`timeline.card.${ys}_${ms}`).replace('{{years}}', years).replace('{{months}}', y_months)
+    }
+    if (months == 12) {
+        return t('timeline.card.year')
+    }
+    return months > 1 ? t('timeline.card.months').replace('{{months}}', months) : t('timeline.card.month').replace('{{months}}', months);
+}
 
 const {t} = useTranslations(Astro.url);
+const modalId = 'modal_' + _.uniqueId();
 ---
 <article>
     <Flex gap={StyleSPEnum.SP8} alignItems={StyleAlignItemsEnum.CENTER}>
+        <Image class="logo" src={logo} alt={`${name} logo`} loading="eagle"/>
         <Text fontSize={StyleFSEnum.FS12}>
             {name}
         </Text>
-        <Image class="logo" src={logo} alt={`${name} logo`} loading="eagle"/>
+        <Text fontSize={StyleFSEnum.FS12}>
+            |
+        </Text>
+        <Text class="months" fontSize={StyleFSEnum.FS12}>
+            {monthDiff()}&nbsp;{current ? t('timeline.card.current') : ''}
+        </Text>
     </Flex>
     <Spacer size={StyleSPEnum.SP8}/>
     <Box>
@@ -35,13 +64,52 @@ const {t} = useTranslations(Astro.url);
         </Text>
     </Box>
     <Spacer size={StyleSPEnum.SP8}/>
-    {tags.map((tag) =>
-            <Tag name={tag}/>)}
+    <Flex wrap={StyleFlexWrapEnum.WRAP} gap={StyleSPEnum.SP4}>
+        {tags.map((tag) =>
+                <Tag name={tag}/>)}
+    </Flex>
+    <Spacer size={StyleSPEnum.SP16}/>
+    <Box class="line"/>
+    <Spacer size={StyleSPEnum.SP16}/>
+    <Button data-modal-id={modalId} class="timeline-card-button" type={ButtonTypeEnum.OUTLINE}>
+        {t('timeline.card.button')}
+    </Button>
+    <TimelineModal id={modalId} {...Astro.props}/>
 </article>
 
+<script>
+    const buttons = document.querySelectorAll('.timeline-card-button');
+    buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+            const modal = document.getElementById(button.getAttribute('data-modal-id'));
+            const isOpen = modal.classList.contains('open');
+            if (isOpen) {
+                modal.classList.remove('open');
+                document.body.style.overflow = 'auto';
+            } else {
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+        })
+    })
+</script>
+
 <style lang="scss">
+  @import "../styles/vars";
+
   .logo {
     max-height: 28px;
-    max-width: fit-content;
+    max-width: min-content;
+  }
+
+  .months {
+    color: $months;
+  }
+
+  .line {
+    height: 1px;
+    width: 100%;
+    background-color: #000000;
+    opacity: 0.06;
   }
 </style>

@@ -3,14 +3,19 @@ import {useTranslations} from "../i18n/utils";
 import Layout from '../layouts/Layout.astro';
 import Header from "../components/Header.astro";
 import Timeline from "../components/Timeline.astro";
-import LeemonsLogo from '../images/leemons.png';
-import DigaLogo from '../images/diga.png';
-import LeemonsImage from '../images/timeline-leemons.jpg';
+import LeemonsLogo from '../images/projects/leemons.webp';
+import CristianLayLogo from '../images/projects/cristian-lay.svg';
+import DigaLogo from '../images/projects/diga.webp';
+import LeemonsImage from '../images/projects/timeline-leemons.webp';
 import {TagEnum} from "../enums/tag.enum";
 import Spacer from "../layouts/Spacer.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
 import CodingSection from "../components/CodingSection.astro";
 import CareerSection from "../components/CareerSection.astro";
+import EciLogo from '../images/projects/eci.webp';
+import MouseeLogo from '../images/projects/mousee.png';
+import BetweenLogo from '../images/projects/between.webp';
+import IsdinLogo from '../images/projects/isdin.webp';
 
 const {t, locale} = useTranslations(Astro.url);
 ---
@@ -20,6 +25,30 @@ const {t, locale} = useTranslations(Astro.url);
     <CodingSection/>
     <CareerSection/>
     <Timeline companies={[
+        {
+            name: t('company.between.name'),
+            logo: BetweenLogo,
+            side: 'right',
+            projects: [
+                {
+                    endDate: new Date(),
+                    startDate: new Date('02/01/2024'),
+                    color: '#e3302b',
+                    proyectLogo: IsdinLogo,
+                    proyectImage: LeemonsImage,
+                    proyectName: t('company.between.project.isdin.name'),
+                    proyectCardProps: {
+                        current: true,
+                        name: t('company.between.project.isdin.name'),
+                        position: t('company.between.project.isdin.position'),
+                        logo: IsdinLogo,
+                        description: t('company.between.project.isdin.description'),
+                        tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL],
+                        proyectModalProps: {}
+                    }
+                }
+            ]
+        },
         {
             name: t('company.leemons.name'),
             logo: LeemonsLogo,
@@ -37,7 +66,7 @@ const {t, locale} = useTranslations(Astro.url);
                         position: t('company.leemons.project.leemons.position'),
                         logo: LeemonsLogo,
                         description: t('company.leemons.project.leemons.description'),
-                        tags: [TagEnum.MONGO_DB]
+                        tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS],
                     }
                 }
             ]
@@ -48,34 +77,64 @@ const {t, locale} = useTranslations(Astro.url);
             projects: [
                 {
                     endDate: new Date('06/01/2021'),
-                    startDate: new Date('06/01/2020'),
-                    color: '#B1E400',
-                    proyectLogo: LeemonsLogo,
+                    startDate: new Date('08/01/2020'),
+                    color: '#007C52',
+                    proyectLogo: EciLogo,
                     proyectImage: LeemonsImage,
-                    proyectName: t('company.leemons.project.leemons.name'),
+                    proyectName: t('company.diga.project.eci.name'),
                     proyectCardProps: {
-                        name: t('company.leemons.project.leemons.name'),
-                        position: t('company.leemons.project.leemons.position'),
-                        logo: LeemonsLogo,
-                        description: t('company.leemons.project.leemons.description'),
-                        tags: [TagEnum.MONGO_DB]
+                        name: t('company.diga.project.eci.name'),
+                        position: t('company.diga.project.eci.position'),
+                        logo: EciLogo,
+                        description: t('company.diga.project.eci.description'),
+                        tags: [TagEnum.ANGULAR, TagEnum.HTML5, TagEnum.CSS3],
                     }
                 },
                 {
-                    endDate: new Date('06/01/2020'),
-                    startDate: new Date('06/01/2018'),
-                    color: '#B1E400',
-                    proyectLogo: LeemonsLogo,
+                    endDate: new Date('08/01/2020'),
+                    startDate: new Date('05/01/2020'),
+                    color: '#333333',
+                    proyectLogo: CristianLayLogo,
                     proyectImage: LeemonsImage,
-                    proyectName: t('company.leemons.project.leemons.name'),
+                    proyectName: t('company.diga.project.clapp.name'),
                     proyectCardProps: {
-                        name: t('company.leemons.project.leemons.name'),
-                        position: t('company.leemons.project.leemons.position'),
-                        logo: LeemonsLogo,
-                        description: t('company.leemons.project.leemons.description'),
-                        tags: [TagEnum.MONGO_DB]
+                        name: t('company.diga.project.clapp.name'),
+                        position: t('company.diga.project.clapp.position'),
+                        logo: CristianLayLogo,
+                        description: t('company.diga.project.clapp.description'),
+                        tags: [TagEnum.REACT_NATIVE]
                     }
-                }
+                },
+                {
+                    endDate: new Date('05/01/2020'),
+                    startDate: new Date('03/01/2020'),
+                    color: '#333333',
+                    proyectLogo: CristianLayLogo,
+                    proyectImage: LeemonsImage,
+                    proyectName: t('company.diga.project.clweb.name'),
+                    proyectCardProps: {
+                        name: t('company.diga.project.clweb.name'),
+                        position: t('company.diga.project.clweb.position'),
+                        logo: CristianLayLogo,
+                        description: t('company.diga.project.clweb.description'),
+                        tags: [TagEnum.HTML5, TagEnum.CSS3]
+                    }
+                },
+                {
+                    endDate: new Date('03/01/2020'),
+                    startDate: new Date('12/01/2019'),
+                    color: '#ff4200',
+                    proyectLogo: MouseeLogo,
+                    proyectImage: LeemonsImage,
+                    proyectName: t('company.diga.project.mousee.name'),
+                    proyectCardProps: {
+                        name: t('company.diga.project.mousee.name'),
+                        position: t('company.diga.project.mousee.position'),
+                        logo: MouseeLogo,
+                        description: t('company.diga.project.mousee.description'),
+                        tags: [TagEnum.NODE_JS, TagEnum.EXPRESS, TagEnum.ANGULAR, TagEnum.MONGO_DB]
+                    }
+                },
             ]
         },
     ]}/>

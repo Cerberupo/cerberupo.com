@@ -22,22 +22,64 @@ export const es = {
             9: 'Octubre',
             10: 'Noviembre',
             11: 'Diciembre',
+        },
+        card: {
+            current: '(Actualmente)',
+            button: 'Ver proyecto completo',
+            months: '{{months}} meses',
+            month: '{{months}} mes',
+            year: '1 año',
+            year_month: '{{years}} año y {{months}} mes',
+            year_months: '{{years}} año y {{months}} meses',
+            years_month: '{{years}} años y {{months}} mes',
+            years_months: '{{years}} años y {{months}} meses'
         }
     },
     company: {
+        between: {
+            name: 'Between Technology',
+            project: {
+                isdin: {
+                    name: 'ISDIN',
+                    position: 'Full Stack Developer',
+                    description: 'Ingresé como apoyo, encargado de asistir a los compañeros más junior de mi equipo y de desarrollar nuevas funcionalidades, así como optimizar las existentes, siempre con un enfoque en la calidad del código.'
+                }
+            }
+        },
         leemons: {
             name: 'Leemons Edtech Solutions',
             project: {
                 leemons: {
                     name: 'LEEMONS',
                     position: 'Full Stack Lead Developer',
-                    description: 'Creando un SASS para revolucionar el futuro de la educación online.<br/>Fuí uno de los desarrolladores principales. Cree un “Trello”, un “google calendar” y un “whatsup” a la velocidad de la luz 🚀'
-
+                    description: 'En colaboración con un pequeño equipo, desarrollamos una solución SaaS para revolucionar el futuro de la educación en línea. Fui uno de los desarrolladores principales y creé aplicaciones como un "Trello", un "Google Calendar", un "WhatsApp" y más, a una velocidad vertiginosa 🚀'
                 }
             }
         },
         diga: {
-            name: 'Diga33!'
+            name: 'Diga33!',
+            project: {
+                eci: {
+                    name: 'CORTE INGLES',
+                    position: ' Front-end developer',
+                    description: 'Brindé apoyo al equipo de El Corte Inglés en su proceso de modernización del back office'
+                },
+                clapp: {
+                    name: 'CRISTIAN LAY (APP)',
+                    position: ' Front-end developer',
+                    description: 'Creé desde cero una aplicación móvil para Cristian Lay, que permite visualizar sus catálogos y realizar compras de sus productos.'
+                },
+                clweb: {
+                    name: 'CRISTIAN LAY (WEB)',
+                    position: 'Front-end developer',
+                    description: 'Apoyé en el desarrollo de la nueva web de Cristian Lay, maquetando todas las páginas y componentes solicitados, que luego fueron integrados en su CMS por el equipo'
+                },
+                mousee: {
+                    name: 'MOUSEE',
+                    position: 'Full Stack Developer',
+                    description: 'Desarrollé junto a mi novia la nueva web de Mousee, que permite crear, entregar, devolver, puntuar y delegar tareas.'
+                }
+            }
         }
     },
     section: {

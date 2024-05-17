@@ -5,5 +5,8 @@ export interface TimelineCard {
     name: string;
     position: string;
     description: string;
+    endDate: Date;
+    startDate: Date;
+    current: boolean;
     tags: TagEnum[];
 }

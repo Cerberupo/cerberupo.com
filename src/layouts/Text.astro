@@ -25,8 +25,9 @@ const styleVars = {...styles, fontSize: fontSize.default, fontWeight: fontWeight
 ---
 <astro-text class={`${_class} text`}
             {...getElementMediaQueryData(fontSize, 'font-size')}
-            {...getElementMediaQueryData(fontWeight, 'font-weight')}>
-    <Box as={as} {...rest} styleVars={styleVars}>
+            {...getElementMediaQueryData(fontWeight, 'font-weight')}
+            {...rest}>
+    <Box as={as} styleVars={styleVars}>
         <slot/>
     </Box>
 </astro-text>

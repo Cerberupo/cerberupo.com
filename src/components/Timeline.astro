@@ -56,7 +56,8 @@ function getDate(date: Date | null) {
                                                 <Box style={{background: project.color}} class="project-line"/>
                                             </Flex>
                                             <Box class="timeline-card">
-                                                <TimelineCard {...project.proyectCardProps}/>
+                                                <TimelineCard {...project.proyectCardProps} endDate={project.endDate}
+                                                              startDate={project.startDate}/>
                                             </Box>
                                         </>}
 
@@ -64,7 +65,8 @@ function getDate(date: Date | null) {
                                 {company.side === 'left' &&
                                         <>
                                             <Box class="timeline-card">
-                                                <TimelineCard {...project.proyectCardProps}/>
+                                                <TimelineCard {...project.proyectCardProps} endDate={project.endDate}
+                                                              startDate={project.startDate}/>
                                             </Box>
                                             <Flex justifyContent={StyleAlignItemsEnum.CENTER}
                                                   class="project-line-container">

@@ -1,0 +1,43 @@
+---
+import {ButtonTypeEnum} from "../styles/enums/button-type.enum";
+
+import Text from "./Text.astro";
+import {StyleFSEnum} from "../styles/enums/fs.enum";
+interface Props {
+    type: ButtonTypeEnum;
+    class: string;
+}
+
+let {type, ...rest} = Astro.props;
+
+const styleVars = {
+    color: type === ButtonTypeEnum.OUTLINE ? '#1D1D1D' : '#FFFFFF',
+    backgroundColor: type === ButtonTypeEnum.OUTLINE ? '#FFFFFF' : '#1D1D1D',
+    backgroundColorHover: type === ButtonTypeEnum.OUTLINE ? '#1D1D1D' : '#FFFFFF',
+    colorHover: type === ButtonTypeEnum.OUTLINE ? '#FFFFFF' : '#1D1D1D',
+}
+---
+<button {...rest}>
+    <Text size={StyleFSEnum.FS14}>
+        <slot/>
+    </Text>
+</button>
+
+<style lang="scss" define:vars={styleVars}>
+  @import "../styles/vars";
+
+  button {
+    border: 2px solid $btnDark;
+    border-radius: 4px;
+    color: var(--color);
+    background-color: var(--backgroundColor);
+    padding: $sp8 $sp16 $sp8 $sp16;
+    cursor: pointer;
+
+    &:hover {
+      transition: 200ms ease all;
+      background-color: var(--backgroundColorHover);
+      color: var(--colorHover);
+    }
+  }
+</style>
