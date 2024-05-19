@@ -40,9 +40,10 @@ export const es = {
             name: 'Between Technology',
             project: {
                 isdin: {
-                    name: 'ISDIN',
+                    name: 'Isdin',
                     position: 'Full Stack Developer',
-                    description: 'Ingresé como apoyo, encargado de asistir a los compañeros más junior de mi equipo y de desarrollar nuevas funcionalidades, así como optimizar las existentes, siempre con un enfoque en la calidad del código.'
+                    description: 'Ingresé como apoyo, encargado de asistir a los compañeros más junior de mi equipo y de desarrollar nuevas funcionalidades, así como optimizar las existentes, siempre con un enfoque en la calidad del código.',
+                    fullDescription: 'Ingresé como apoyo clave en mi equipo, encargado de asistir y guiar a los compañeros más junior, fomentando su desarrollo profesional y asegurando que comprendan y apliquen las mejores prácticas en desarrollo de software. Además, me enfoqué en el desarrollo de nuevas funcionalidades innovadoras y en la optimización de las ya existentes, siempre manteniendo un alto estándar de calidad en el código. Aporté mi experiencia en el uso de microservicios para facilitar el proceso de transición a esta arquitectura, en el cual estamos trabajando actualmente para mejorar la escalabilidad y eficiencia de nuestros proyectos.'
                 }
             }
         },
@@ -50,7 +51,7 @@ export const es = {
             name: 'Leemons Edtech Solutions',
             project: {
                 leemons: {
-                    name: 'LEEMONS',
+                    name: 'Leemons',
                     position: 'Full Stack Lead Developer',
                     description: 'En colaboración con un pequeño equipo, desarrollamos una solución SaaS para revolucionar el futuro de la educación en línea. Fui uno de los desarrolladores principales y creé aplicaciones como un "Trello", un "Google Calendar", un "WhatsApp" y más, a una velocidad vertiginosa 🚀'
                 }
@@ -60,22 +61,22 @@ export const es = {
             name: 'Diga33!',
             project: {
                 eci: {
-                    name: 'CORTE INGLES',
+                    name: 'Corte ingles',
                     position: ' Front-end developer',
                     description: 'Brindé apoyo al equipo de El Corte Inglés en su proceso de modernización del back office'
                 },
                 clapp: {
-                    name: 'CRISTIAN LAY (APP)',
+                    name: 'Cristian lay (app)',
                     position: ' Front-end developer',
                     description: 'Creé desde cero una aplicación móvil para Cristian Lay, que permite visualizar sus catálogos y realizar compras de sus productos.'
                 },
                 clweb: {
-                    name: 'CRISTIAN LAY (WEB)',
+                    name: 'Cristian lay (web)',
                     position: 'Front-end developer',
                     description: 'Apoyé en el desarrollo de la nueva web de Cristian Lay, maquetando todas las páginas y componentes solicitados, que luego fueron integrados en su CMS por el equipo'
                 },
                 mousee: {
-                    name: 'MOUSEE',
+                    name: 'Mousee',
                     position: 'Full Stack Developer',
                     description: 'Desarrollé junto a mi novia la nueva web de Mousee, que permite crear, entregar, devolver, puntuar y delegar tareas.'
                 }

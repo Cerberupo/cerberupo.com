@@ -4,6 +4,7 @@ export enum StyleFSEnum {
     FS12 = `${12 / 16}rem`,
     FS14 = `${14 / 16}rem`,
     FS16 = `${16 / 16}rem`,
+    FS18 = `${18 / 16}rem`,
     FS20 = `${20 / 16}rem`,
     FS24 = `${24 / 16}rem`,
     FS32 = `${32 / 16}rem`,

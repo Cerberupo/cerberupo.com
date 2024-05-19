@@ -4,48 +4,415 @@ import {Image} from 'astro:assets';
 import {useTranslations} from "../i18n/utils";
 import Text from "../layouts/Text.astro";
 import {StyleFSEnum} from "../styles/enums/fs.enum";
+import Box from "../layouts/Box.astro";
+import Cross from "../icons/cross.svg";
+import ChevronRight from "../icons/chevron-right.svg";
+import ChevronLeft from "../icons/chevron-left.svg";
+import Fullscreen from "../icons/fullscreen.svg";
+import CloseFullscreen from "../icons/close-fullscreen.svg";
+import Calendar from "../icons/calendar.svg";
 import Flex from "../layouts/Flex.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
 import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
+import {getDate} from "../helpers/getDate";
 import Spacer from "../layouts/Spacer.astro";
-import Tag from "./Tag.astro";
-import Box from "../layouts/Box.astro";
-import Button from "../layouts/Button.astro";
-import {ButtonTypeEnum} from "../styles/enums/button-type.enum";
 import {StyleFlexWrapEnum} from "../styles/enums/flex-wrap.enum";
+import Tag from "./Tag.astro";
 interface Props extends TimelineCard {
 }
 
-const {id, name, position, logo, description, tags, endDate, startDate, current} = Astro.props;
+const {
+    id,
+    name,
+    position,
+    company,
+    fullTags,
+    logo,
+    images,
+    fullDescription,
+    tags,
+    endDate,
+    startDate,
+    current
+} = Astro.props;
 
 const {t} = useTranslations(Astro.url);
 ---
-<article id={id} class="modal">
+<section id={id} class="modal">
     <Box class="modal-bg"/>
     <Box class="modal-container">
-        {name}
+        <header>
+            <Image class="company-image" src={company.logo}
+                   alt={`${company.name} logo`} loading="eagle"/>
+            <Text fontSize={StyleFSEnum.FS24}>
+                {company.name}
+            </Text>
+            <Image class="cross" src={Cross} alt="Cross icon" loading="eagle"/>
+        </header>
+        <Box class="project">
+            <Flex gap={StyleSPEnum.SP16} alignItems={StyleAlignItemsEnum.CENTER}>
+                <Image class="project-logo" src={logo} alt="Project logo" loading="eagle"/>
+                <Text class="name" fontSize={StyleFSEnum.FS20}>
+                    {position}
+                </Text>
+            </Flex>
+            <Flex gap={StyleSPEnum.SP4} alignItems={StyleAlignItemsEnum.CENTER}>
+                <Image class="calendar-icon" src={Calendar} alt="Calendar icon" loading="eagle"/>
+                <Text fontSize={StyleFSEnum.FS14}>
+                    {getDate(t, startDate)} - {getDate(t, endDate)}
+                </Text>
+            </Flex>
+        </Box>
+        <Box class="container">
+            <!-- Slider main container -->
+            <div class="swiper timeline-swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    {images?.map((src, i) =>
+                            <div class="swiper-slide">
+                                <Image src={src} alt={`Image ${i + 1}`}/>
+                            </div>
+                    )}
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev">
+                    <Image src={ChevronLeft} alt="<"/>
+                </div>
+                <div class="swiper-button-next">
+                    <Image src={ChevronRight} alt=">"/>
+                </div>
+
+                <Box class="fullscreen">
+                    <Image class="open" src={Fullscreen} alt="Fullscreen"/>
+                    <Image class="close" src={CloseFullscreen} alt="Close fullscreen"/>
+                </Box>
+
+                <div class="autoplay-progress">
+                    <svg viewBox="0 0 48 48">
+                        <circle cx="24" cy="24" r="20"></circle>
+                    </svg>
+                    <span></span>
+                </div>
+            </div>
+            <Box class="content">
+                <Text fontSize={StyleFSEnum.FS18}>
+                    {name}
+                </Text>
+                <Spacer size={StyleSPEnum.SP8}/>
+                <Flex wrap={StyleFlexWrapEnum.WRAP} gap={StyleSPEnum.SP4}>
+                    {fullTags?.map((tag) =>
+                            <Tag name={tag}/>)}
+                </Flex>
+                <Spacer size={StyleSPEnum.SP8}/>
+                <Text fontSize={StyleFSEnum.FS14}>
+                    {fullDescription}
+                </Text>
+                <Spacer size={StyleSPEnum.SP128}/>
+            </Box>
+        </Box>
     </Box>
-</article>
+</section>
 
 <script>
+
+    import Swiper from 'swiper';
+    import {Navigation, Pagination, Autoplay} from 'swiper/modules';
+    // import Swiper and modules styles
+    import 'swiper/css';
+    import 'swiper/css/navigation';
+    import 'swiper/css/pagination';
+
+    const swiperContainers = document.querySelectorAll('.timeline-swiper');
+    swiperContainers.forEach((container) => {
+        const progressCircle: HTMLElement = container.querySelector(".autoplay-progress svg");
+        const progressContent: HTMLElement = container.querySelector(".autoplay-progress span");
+
+        function init() {
+            return new Swiper(container as HTMLElement, {
+                modules: [Navigation, Pagination, Autoplay],
+                slidesPerView: "auto",
+                centeredSlides: true,
+                grabCursor: true,
+                direction: 'horizontal',
+                spaceBetween: 16,
+                loop: true,
+
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false
+                },
+
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'bullets',
+                    dynamicBullets: true,
+                },
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+
+                // And if we need scrollbar
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                    draggable: true
+                },
+                on: {
+                    autoplayTimeLeft(s, time, progress) {
+                        progressCircle.style.setProperty("--progress", (1 - progress).toString());
+                        progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+                    }
+                }
+            } as any);
+        }
+
+        let swiper = init();
+        const fullscreen = container.querySelector('.fullscreen');
+        const cont: HTMLElement = fullscreen.parentNode.parentNode as HTMLElement;
+        fullscreen.addEventListener('click', () => {
+            toggleSwiperFullScreen(fullscreen as HTMLElement, cont);
+            setTimeout(() => {
+                swiper.autoplay.resume();
+            }, 100);
+        })
+    })
+
+
+    function exec(modal: HTMLElement) {
+        const isOpen = modal.classList.contains('open');
+        if (isOpen) {
+            modal.classList.remove('open');
+            document.body.style.overflow = 'auto';
+        } else {
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function toggleSwiperFullScreen(el: HTMLElement, container: HTMLElement) {
+        const swiper: HTMLElement = el.parentNode as HTMLElement;
+        if (swiper.classList.contains('swiper-fullscreen')) {
+            container.prepend(swiper);
+        } else {
+            document.body.appendChild(swiper);
+        }
+        swiper.classList.toggle('swiper-fullscreen');
+    }
+
     const bgs = document.querySelectorAll('.modal-bg');
+    const cross = document.querySelectorAll('.modal header .cross');
+    cross.forEach((cros) => {
+        cros.addEventListener('click', () => {
+            exec(cros.parentNode.parentNode.parentNode as HTMLElement);
+        })
+    })
     bgs.forEach((bg) => {
         bg.addEventListener('click', () => {
-            const modal = bg.parentNode as HTMLElement;
-            const isOpen = modal.classList.contains('open');
-            if (isOpen) {
-                modal.classList.remove('open');
-                document.body.style.overflow = 'auto';
-            } else {
-                modal.classList.add('open');
-                document.body.style.overflow = 'hidden';
-            }
+            exec(bg.parentNode as HTMLElement);
         })
     })
 </script>
 
 <style lang="scss">
   @import "../styles/vars";
+
+  .swiper-fullscreen {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 20;
+
+    .swiper-wrapper {
+      padding-top: 4vh;
+      height: 90vh;
+    }
+
+    .fullscreen {
+      .open {
+        display: none;
+      }
+
+      .close {
+        display: block;
+      }
+    }
+  }
+
+  .swiper {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: $modalHeaderBg;
+  }
+
+  .swiper-wrapper {
+    height: 30vh;
+  }
+
+  .swiper-slide {
+    width: auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+  }
+
+  .container {
+    height: calc(100vh - 160px);
+    overflow: auto;
+  }
+
+  .content {
+    padding: $sp32;
+  }
+
+  .swiper-pagination {
+    background-color: $white;
+    border-radius: 16px;
+    padding: 6px;
+    border: 1px solid $dark;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: $white;
+    border: 1px solid $dark;
+
+    img {
+      width: 28px;
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    background-color: $dark !important;
+  }
+
+  .fullscreen {
+    position: absolute;
+    right: var(--swiper-navigation-sides-offset, 10px);
+    top: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: $dark;
+    background-color: $white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 1px solid $dark;
+
+    .close {
+      display: none;
+    }
+  }
+
+  .autoplay-progress {
+    position: absolute;
+    right: var(--swiper-navigation-sides-offset, 10px);
+    bottom: 16px;
+    z-index: 10;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: $dark;
+    background-color: $white;
+    border-radius: 50%;
+  }
+
+  .autoplay-progress svg {
+    --progress: 0;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    stroke-width: 4px;
+    stroke: $dark;
+    fill: none;
+    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
+    stroke-dasharray: 125.6;
+    transform: rotate(-90deg);
+  }
+
+  .swiper {
+    width: 100%;
+  }
+
+  .calendar-icon {
+    width: 16px;
+  }
+
+  .project {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: $sp32;
+    padding-right: $sp32;
+    gap: $sp16;
+
+    .project-logo {
+      height: 32px;
+      max-width: min-content;
+    }
+  }
+
+  header {
+    background-color: $modalHeaderBg;
+    position: relative;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding-left: $sp32;
+    gap: $sp8;
+
+    .company-image {
+      height: 45px;
+      width: 45px;
+    }
+
+    .cross {
+      height: 18px;
+      width: 18px;
+      position: absolute;
+      right: 25px;
+      top: 50%;
+      transition: 300ms ease;
+      transform: translateY(-50%);
+      cursor: pointer;
+
+      &:hover {
+        transform: translateY(-50%) scale(1.2);
+      }
+    }
+  }
 
   .modal {
     position: fixed;

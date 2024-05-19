@@ -16,11 +16,8 @@ import {StyleAlignItemsEnum} from "../styles/enums/align-items.enum";
 import Text from "../layouts/Text.astro";
 import {StyleFSEnum} from "../styles/enums/fs.enum";
 import {StyleFWEnum} from "../styles/enums/fw.enum";
+import {getDate} from "../helpers/getDate";
 const {t} = useTranslations(Astro.url);
-function getDate(date: Date | null) {
-    if (!date) return t('timeline.currently');
-    return t(`timeline.months.${date.getMonth()}`) + ' ' + date.getFullYear();
-}
 ---
 
 <section>
@@ -30,7 +27,7 @@ function getDate(date: Date | null) {
                 <Box class="container-container">
                     <Box p={StyleSPEnum.SP8} class="company-info">
                         <Text fontSize={StyleFSEnum.FS14} fontWeight={StyleFWEnum.LIGHT}>
-                            {getDate(company.projects[0].endDate)}
+                            {getDate(t, company.projects[0].endDate)}
                         </Text>
                         <Spacer size={StyleSPEnum.SP8}/>
                         <Text fontSize={StyleFSEnum.FS16} fontWeight={StyleFWEnum.REGULAR}>
@@ -56,7 +53,9 @@ function getDate(date: Date | null) {
                                                 <Box style={{background: project.color}} class="project-line"/>
                                             </Flex>
                                             <Box class="timeline-card">
-                                                <TimelineCard {...project.proyectCardProps} endDate={project.endDate}
+                                                <TimelineCard {...project.proyectCardProps}
+                                                              company={company}
+                                                              endDate={project.endDate}
                                                               startDate={project.startDate}/>
                                             </Box>
                                         </>}
@@ -65,7 +64,9 @@ function getDate(date: Date | null) {
                                 {company.side === 'left' &&
                                         <>
                                             <Box class="timeline-card">
-                                                <TimelineCard {...project.proyectCardProps} endDate={project.endDate}
+                                                <TimelineCard {...project.proyectCardProps}
+                                                              company={company}
+                                                              endDate={project.endDate}
                                                               startDate={project.startDate}/>
                                             </Box>
                                             <Flex justifyContent={StyleAlignItemsEnum.CENTER}

@@ -7,6 +7,14 @@ import LeemonsLogo from '../images/projects/leemons.webp';
 import CristianLayLogo from '../images/projects/cristian-lay.svg';
 import DigaLogo from '../images/projects/diga.webp';
 import LeemonsImage from '../images/projects/timeline-leemons.webp';
+import Leemons1 from '../images/leemons/1.webp';
+import Leemons2 from '../images/leemons/2.webp';
+import Leemons3 from '../images/leemons/3.webp';
+import Leemons4 from '../images/leemons/4.webp';
+import Leemons5 from '../images/leemons/5.webp';
+import Leemons6 from '../images/leemons/6.webp';
+import Leemons7 from '../images/leemons/7.webp';
+import Leemons8 from '../images/leemons/8.webp';
 import {TagEnum} from "../enums/tag.enum";
 import Spacer from "../layouts/Spacer.astro";
 import {StyleSPEnum} from "../styles/enums/sp.enum";
@@ -14,7 +22,7 @@ import CodingSection from "../components/CodingSection.astro";
 import CareerSection from "../components/CareerSection.astro";
 import EciLogo from '../images/projects/eci.webp';
 import MouseeLogo from '../images/projects/mousee.png';
-import BetweenLogo from '../images/projects/between.webp';
+import BetweenLogo from '../images/projects/between.png';
 import IsdinLogo from '../images/projects/isdin.webp';
 
 const {t, locale} = useTranslations(Astro.url);
@@ -44,7 +52,15 @@ const {t, locale} = useTranslations(Astro.url);
                         logo: IsdinLogo,
                         description: t('company.between.project.isdin.description'),
                         tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL],
-                        proyectModalProps: {}
+                        fullTags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL],
+                        fullDescription: t('company.between.project.isdin.fullDescription'),
+                        images: [
+                            LeemonsImage,
+                            LeemonsImage,
+                            LeemonsImage,
+                            LeemonsImage,
+                            LeemonsImage
+                        ]
                     }
                 }
             ]
@@ -67,6 +83,17 @@ const {t, locale} = useTranslations(Astro.url);
                         logo: LeemonsLogo,
                         description: t('company.leemons.project.leemons.description'),
                         tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS],
+                        fullTags: [TagEnum.AWS_SES, TagEnum.AWS_ECS, TagEnum.AWS_ECR, TagEnum.AWS_IOT, TagEnum.AWS_ATHENA, TagEnum.AWS_ROUTE53, TagEnum.AWS_CLOUDFRONT, TagEnum.AWS_GATEWAY, TagEnum.AWS_S3, TagEnum.AWS_IAM, TagEnum.AWS_LAMBDA, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS, TagEnum.NEXT],
+                        images: [
+                            Leemons1,
+                            Leemons2,
+                            Leemons3,
+                            Leemons4,
+                            Leemons5,
+                            Leemons6,
+                            Leemons7,
+                            Leemons8
+                        ]
                     }
                 }
             ]

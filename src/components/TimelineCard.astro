@@ -18,7 +18,7 @@ import _ from "lodash";
 interface Props extends TimelineCard {
 }
 
-const {name, position, logo, description, tags, endDate, startDate, current} = Astro.props;
+const {name, position, logo, description, tags, endDate, startDate, current, company} = Astro.props;
 
 function monthDiff() {
     const months = endDate.getMonth() - startDate.getMonth() +
@@ -43,7 +43,7 @@ const modalId = 'modal_' + _.uniqueId();
 <article>
     <Flex gap={StyleSPEnum.SP8} alignItems={StyleAlignItemsEnum.CENTER}>
         <Image class="logo" src={logo} alt={`${name} logo`} loading="eagle"/>
-        <Text fontSize={StyleFSEnum.FS12}>
+        <Text class="name" fontSize={StyleFSEnum.FS12}>
             {name}
         </Text>
         <Text fontSize={StyleFSEnum.FS12}>
@@ -74,7 +74,7 @@ const modalId = 'modal_' + _.uniqueId();
     <Button data-modal-id={modalId} class="timeline-card-button" type={ButtonTypeEnum.OUTLINE}>
         {t('timeline.card.button')}
     </Button>
-    <TimelineModal id={modalId} {...Astro.props}/>
+    <TimelineModal id={modalId} company={company} {...Astro.props}/>
 </article>
 
 <script>
@@ -96,6 +96,10 @@ const modalId = 'modal_' + _.uniqueId();
 
 <style lang="scss">
   @import "../styles/vars";
+
+  .name {
+    text-transform: uppercase;
+  }
 
   .logo {
     max-height: 28px;
