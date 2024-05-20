@@ -53,7 +53,25 @@ export const es = {
                 leemons: {
                     name: 'Leemons',
                     position: 'Full Stack Lead Developer',
-                    description: 'En colaboración con un pequeño equipo, desarrollamos una solución SaaS para revolucionar el futuro de la educación en línea. Fui uno de los desarrolladores principales y creé aplicaciones como un "Trello", un "Google Calendar", un "WhatsApp" y más, a una velocidad vertiginosa 🚀'
+                    description: 'En colaboración con un pequeño equipo, desarrollamos una solución SaaS para revolucionar el futuro de la educación en línea. Fui uno de los desarrolladores principales y creé aplicaciones como un "Trello", un "Google Calendar", un "WhatsApp" y más, a una velocidad vertiginosa 🚀',
+                    fullDescription: '' +
+                        'Participé en un proyecto altamente ambicioso que representó un gran desafío técnico y organizativo. Iniciamos con un equipo compuesto por dos programadores y el CTO, además del equipo de UX/UI. El proyecto comenzó con la creación de un monolito de software libre basado en NodeJS, MySQL y Redis, utilizando Koa como enrutador y Knex para la base de datos.' +
+                        '<br/><br/>' +
+                        'Este monolito funcionaba mediante un sistema de plugins, que permitía instalar y desinstalar módulos adicionales además de los plugins "core". Los plugins podían comunicarse entre sí y lanzar eventos capturados por otros plugins. Trabajábamos en estrecha colaboración con los equipos de UX/UI y de negocio para definir y desarrollar las mejores soluciones técnicas.' +
+                        '<br/><br/>' +
+                        'Durante dos años, desarrollamos 42 plugins, de los cuales fui responsable de 30.  Además de desarrollar muchos de los plugins, fui responsable de casi toda la base de usuarios y permisos de la plataforma, lo cual supuso un gran reto. Un mismo usuario podía entrar como alumno, profesor, administrador o cualquier otro rol, siendo estos completamente flexibles gracias a los permisos totalmente administrables. Alcanzado un punto de madurez, necesitábamos desplegar el monolito para mostrar el producto a potenciales clientes. Implementé un flujo de CI/CD utilizando GitHub Actions para compilar el monolito en una imagen Docker, subirla a AWS ECR y desplegarla en AWS ECS, asegurando así un proceso de despliegue automatizado y libre de errores.' +
+                        '<br/><br/>' +
+                        'Posteriormente, el negocio decidió transformar el producto en un SaaS. El monolito no era viable para este modelo debido a la complejidad del mantenimiento y la necesidad de que cada cliente pudiera gestionar sus propios plugins. Decidimos migrar a una arquitectura de microservicios utilizando MoleculerJS y Nats como sistema de mensajería.' +
+                        '<br/><br/>' +
+                        'Migré la base de datos a MongoDB con Mongoose, adaptando todas las operaciones de CRUD para asegurar el aislamiento de datos entre clientes, evitando así posibles filtraciones de información. Además, desarrollé un sistema de transacciones distribuidas para garantizar la consistencia de los datos en caso de fallos en los microservicios.' +
+                        '<br/><br/>' +
+                        'También organicé y centralicé las librerías comunes en un repositorio NPM, automatizando la actualización y publicación de estas mediante GitHub Actions. Este proceso revisaba los cambios en los paquetes, actualizaba las versiones en los archivos package.json, y actualizaba todos los plugins y paquetes dependientes, manteniendo el repositorio siempre al día.' +
+                        '<br/><br/>' +
+                        'Para el despliegue, modifiqué el script que compilaba el monolito en una imagen Docker para que compilara cada plugin por separado y lo subiera a AWS ECR. Mi compañero luego levantó estos plugins usando AWS EKS. Adicionalmente, creé todos los repositorios ECR necesarios utilizando Terraform, garantizando así una infraestructura como código eficiente y reproducible.' +
+                        '<br/><br/>' +
+                        ' Adicionalmente, monté un proyecto paralelo usando NextJS para que los clientes se pudieran registrar y desde el que poder configurar su despliegue/centro estudiantil. Este proyecto permitía añadir alumnos, profesores, asignaturas, etc., desde un punto centralizado para mayor comodidad a la hora de empezar con el producto.' +
+                        '<br/><br/>' +
+                        'Además de mis tareas como programador, también ayudé a definir, junto a los profesionales de AWS ProServe, la estructura de cuentas de la empresa, la estructura de datos y cómo procesarlos, además de la estructura final de microservicios con EKS que montamos y todo a lo que AWS respecta.'
                 }
             }
         },

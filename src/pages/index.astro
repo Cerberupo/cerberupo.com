@@ -78,12 +78,14 @@ const {t, locale} = useTranslations(Astro.url);
                     proyectImage: LeemonsImage,
                     proyectName: t('company.leemons.project.leemons.name'),
                     proyectCardProps: {
+                        star: true,
                         name: t('company.leemons.project.leemons.name'),
                         position: t('company.leemons.project.leemons.position'),
                         logo: LeemonsLogo,
                         description: t('company.leemons.project.leemons.description'),
-                        tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS],
-                        fullTags: [TagEnum.AWS_SES, TagEnum.AWS_ECS, TagEnum.AWS_ECR, TagEnum.AWS_IOT, TagEnum.AWS_ATHENA, TagEnum.AWS_ROUTE53, TagEnum.AWS_CLOUDFRONT, TagEnum.AWS_GATEWAY, TagEnum.AWS_S3, TagEnum.AWS_IAM, TagEnum.AWS_LAMBDA, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS, TagEnum.NEXT],
+                        fullDescription: t('company.leemons.project.leemons.fullDescription'),
+                        tags: [TagEnum.AWS, TagEnum.TERRAFORM, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS],
+                        fullTags: [TagEnum.TERRAFORM, TagEnum.AWS_SES, TagEnum.AWS_ECS, TagEnum.AWS_ECR, TagEnum.AWS_IOT, TagEnum.AWS_ATHENA, TagEnum.AWS_ROUTE53, TagEnum.AWS_CLOUDFRONT, TagEnum.AWS_GATEWAY, TagEnum.AWS_S3, TagEnum.AWS_IAM, TagEnum.AWS_LAMBDA, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS, TagEnum.NEXT],
                         images: [
                             Leemons1,
                             Leemons2,

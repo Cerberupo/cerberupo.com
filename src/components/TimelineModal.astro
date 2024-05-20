@@ -18,6 +18,7 @@ import {getDate} from "../helpers/getDate";
 import Spacer from "../layouts/Spacer.astro";
 import {StyleFlexWrapEnum} from "../styles/enums/flex-wrap.enum";
 import Tag from "./Tag.astro";
+import Star from "../icons/star.svg";
 interface Props extends TimelineCard {
 }
 
@@ -33,7 +34,7 @@ const {
     tags,
     endDate,
     startDate,
-    current
+    star
 } = Astro.props;
 
 const {t} = useTranslations(Astro.url);
@@ -47,6 +48,8 @@ const {t} = useTranslations(Astro.url);
             <Text fontSize={StyleFSEnum.FS24}>
                 {company.name}
             </Text>
+            {star ?
+                    <Image class="star" src={Star} alt="Star"/> : ''}
             <Image class="cross" src={Cross} alt="Cross icon" loading="eagle"/>
         </header>
         <Box class="project">
@@ -108,9 +111,11 @@ const {t} = useTranslations(Astro.url);
                             <Tag name={tag}/>)}
                 </Flex>
                 <Spacer size={StyleSPEnum.SP8}/>
-                <Text fontSize={StyleFSEnum.FS14}>
-                    {fullDescription}
-                </Text>
+                {fullDescription ?
+                        <Text fontSize={StyleFSEnum.FS14}>
+                            <Fragment set:html={fullDescription}/>
+                        </Text> : ''}
+
                 <Spacer size={StyleSPEnum.SP128}/>
             </Box>
         </Box>
@@ -222,6 +227,10 @@ const {t} = useTranslations(Astro.url);
 
 <style lang="scss">
   @import "../styles/vars";
+
+  .star {
+    width: 30px;
+  }
 
   .swiper-fullscreen {
     position: fixed;
@@ -349,7 +358,7 @@ const {t} = useTranslations(Astro.url);
     --progress: 0;
     position: absolute;
     left: 0;
-    top: 0px;
+    top: 0;
     z-index: 10;
     width: 100%;
     height: 100%;

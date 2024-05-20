@@ -13,12 +13,13 @@ import Box from "../layouts/Box.astro";
 import Button from "../layouts/Button.astro";
 import {ButtonTypeEnum} from "../styles/enums/button-type.enum";
 import {StyleFlexWrapEnum} from "../styles/enums/flex-wrap.enum";
+import Star from "../icons/star.svg";
 import TimelineModal from "./TimelineModal.astro";
 import _ from "lodash";
 interface Props extends TimelineCard {
 }
 
-const {name, position, logo, description, tags, endDate, startDate, current, company} = Astro.props;
+const {star, name, position, logo, description, tags, endDate, startDate, current, company} = Astro.props;
 
 function monthDiff() {
     const months = endDate.getMonth() - startDate.getMonth() +
@@ -52,6 +53,9 @@ const modalId = 'modal_' + _.uniqueId();
         <Text class="months" fontSize={StyleFSEnum.FS12}>
             {monthDiff()}&nbsp;{current ? t('timeline.card.current') : ''}
         </Text>
+        {star ?
+                <Image class="star" src={Star} alt="Star"/> : ''}
+
     </Flex>
     <Spacer size={StyleSPEnum.SP8}/>
     <Box>
@@ -96,6 +100,10 @@ const modalId = 'modal_' + _.uniqueId();
 
 <style lang="scss">
   @import "../styles/vars";
+
+  .star {
+    width: 20px;
+  }
 
   .name {
     text-transform: uppercase;

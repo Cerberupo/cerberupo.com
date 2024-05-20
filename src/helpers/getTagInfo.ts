@@ -30,6 +30,7 @@ import Next from "../icons/tags/nextjs.svg";
 import ECS from "../icons/tags/aws-ecs.svg";
 import ECR from "../icons/tags/aws-ecr.svg";
 import Postgresql from "../icons/tags/postgresql.svg";
+import Terraform from "../icons/tags/terraform.svg";
 
 const tags = {
     [TagEnum.AWS_SES]: {
@@ -159,6 +160,10 @@ const tags = {
     [TagEnum.POSTGRESQL]: {
         image: Postgresql,
         name: 'PostgreSQL',
+    },
+    [TagEnum.TERRAFORM]: {
+        image: Terraform,
+        name: 'Terraform',
     },
 }
 

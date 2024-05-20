@@ -8,4 +8,5 @@ export interface TimelineProject {
     proyectCardProps: TimelineCard;
     proyectImage: any;
     color: string;
+    side?: 'right' | 'left';
 }

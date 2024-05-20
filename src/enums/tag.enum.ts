@@ -30,5 +30,6 @@ export enum TagEnum {
     NEXT = 'nextjs',
     AWS_ECS = 'ecs',
     AWS_ECR = 'ecr',
-    POSTGRESQL = 'postgresql'
+    POSTGRESQL = 'postgresql',
+    TERRAFORM = 'terraform'
 }

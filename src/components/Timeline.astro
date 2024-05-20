@@ -38,48 +38,51 @@ const {t} = useTranslations(Astro.url);
                                alt={`${company.name} logo`} loading="eagle"/>
                         <Spacer size={StyleSPEnum.SP4}/>
                     </Box>
-                    {company.projects.map((project) =>
-                            <Flex class={`company-proyect ${company.side}`}
-                                  data-date-start={project.startDate.toString()}
-                                  data-date-end={project.endDate.toString()}>
-                                {company.side === 'right' &&
-                                        <>
-                                            <Box class="timeline-image-container">
-                                                <Image class="timeline-image" src={project.proyectImage}
-                                                       alt={`${project.proyectName} project`} loading="eagle"/>
-                                            </Box>
-                                            <Flex justifyContent={StyleAlignItemsEnum.CENTER}
-                                                  class="project-line-container">
-                                                <Box style={{background: project.color}} class="project-line"/>
-                                            </Flex>
-                                            <Box class="timeline-card">
-                                                <TimelineCard {...project.proyectCardProps}
-                                                              company={company}
-                                                              endDate={project.endDate}
-                                                              startDate={project.startDate}/>
-                                            </Box>
-                                        </>}
+                    {company.projects.map((project) => {
+                            const side = project.side || company.side;
+                            return (
+                                    <Flex class={`company-proyect ${side}`}
+                                          data-date-start={project.startDate.toString()}
+                                          data-date-end={project.endDate.toString()}>
+                                        {side === 'right' &&
+                                                <>
+                                                    <Box class="timeline-image-container">
+                                                        <Image class="timeline-image" src={project.proyectImage}
+                                                               alt={`${project.proyectName} project`} loading="eagle"/>
+                                                    </Box>
+                                                    <Flex justifyContent={StyleAlignItemsEnum.CENTER}
+                                                          class="project-line-container">
+                                                        <Box style={{background: project.color}} class="project-line"/>
+                                                    </Flex>
+                                                    <Box class="timeline-card">
+                                                        <TimelineCard {...project.proyectCardProps}
+                                                                      company={company}
+                                                                      endDate={project.endDate}
+                                                                      startDate={project.startDate}/>
+                                                    </Box>
+                                                </>}
 
 
-                                {company.side === 'left' &&
-                                        <>
-                                            <Box class="timeline-card">
-                                                <TimelineCard {...project.proyectCardProps}
-                                                              company={company}
-                                                              endDate={project.endDate}
-                                                              startDate={project.startDate}/>
-                                            </Box>
-                                            <Flex justifyContent={StyleAlignItemsEnum.CENTER}
-                                                  class="project-line-container">
-                                                <Box style={{background: project.color}} class="project-line"/>
-                                            </Flex>
-                                            <Box class="timeline-image-container">
-                                                <Image class="timeline-image" src={project.proyectImage}
-                                                       alt={`${project.proyectName} project`} loading="eagle"/>
-                                            </Box>
-                                        </>}
+                                        {side === 'left' &&
+                                                <>
+                                                    <Box class="timeline-card">
+                                                        <TimelineCard {...project.proyectCardProps}
+                                                                      company={company}
+                                                                      endDate={project.endDate}
+                                                                      startDate={project.startDate}/>
+                                                    </Box>
+                                                    <Flex justifyContent={StyleAlignItemsEnum.CENTER}
+                                                          class="project-line-container">
+                                                        <Box style={{background: project.color}} class="project-line"/>
+                                                    </Flex>
+                                                    <Box class="timeline-image-container">
+                                                        <Image class="timeline-image" src={project.proyectImage}
+                                                               alt={`${project.proyectName} project`} loading="eagle"/>
+                                                    </Box>
+                                                </>}
 
-                            </Flex>
+                                    </Flex>)
+                        }
                     )}
                 </Box>
         )}
@@ -93,7 +96,7 @@ const {t} = useTranslations(Astro.url);
     const containers: HTMLElement[] = document.querySelectorAll('.container-container') as HTMLElement[];
     const companyInfos: HTMLElement[] = document.querySelectorAll('.company-info') as HTMLElement[];
 
-    document.addEventListener("scroll", (event) => {
+    document.addEventListener("scroll", () => {
         process();
     });
     process();
