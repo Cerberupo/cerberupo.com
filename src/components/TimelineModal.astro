@@ -66,41 +66,38 @@ const {t} = useTranslations(Astro.url);
                 </Text>
             </Flex>
         </Box>
+
         <Box class="container">
-            <!-- Slider main container -->
-            <div class="swiper timeline-swiper">
-                <!-- Additional required wrapper -->
-                <div class="swiper-wrapper">
-                    <!-- Slides -->
-                    {images?.map((src, i) =>
-                            <div class="swiper-slide">
-                                <Image src={src} alt={`Image ${i + 1}`}/>
-                            </div>
-                    )}
-                </div>
-                <!-- If we need pagination -->
-                <div class="swiper-pagination"></div>
+            {images?.length ?
+                    <div class="swiper timeline-swiper">
+                        <div class="swiper-wrapper">
+                            {images?.map((src, i) =>
+                                    <div class="swiper-slide">
+                                        <Image src={src} alt={`Image ${i + 1}`}/>
+                                    </div>
+                            )}
+                        </div>
+                        <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev">
+                            <Image src={ChevronLeft} alt="<"/>
+                        </div>
+                        <div class="swiper-button-next">
+                            <Image src={ChevronRight} alt=">"/>
+                        </div>
 
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev">
-                    <Image src={ChevronLeft} alt="<"/>
-                </div>
-                <div class="swiper-button-next">
-                    <Image src={ChevronRight} alt=">"/>
-                </div>
+                        <Box class="fullscreen">
+                            <Image class="open" src={Fullscreen} alt="Fullscreen"/>
+                            <Image class="close" src={CloseFullscreen} alt="Close fullscreen"/>
+                        </Box>
 
-                <Box class="fullscreen">
-                    <Image class="open" src={Fullscreen} alt="Fullscreen"/>
-                    <Image class="close" src={CloseFullscreen} alt="Close fullscreen"/>
-                </Box>
+                        <div class="autoplay-progress">
+                            <svg viewBox="0 0 48 48">
+                                <circle cx="24" cy="24" r="20"></circle>
+                            </svg>
+                            <span></span>
+                        </div>
+                    </div> : ''}
 
-                <div class="autoplay-progress">
-                    <svg viewBox="0 0 48 48">
-                        <circle cx="24" cy="24" r="20"></circle>
-                    </svg>
-                    <span></span>
-                </div>
-            </div>
             <Box class="content">
                 <Text fontSize={StyleFSEnum.FS18}>
                     {name}
@@ -124,67 +121,22 @@ const {t} = useTranslations(Astro.url);
 
 <script>
 
-    import Swiper from 'swiper';
-    import {Navigation, Pagination, Autoplay} from 'swiper/modules';
+
     // import Swiper and modules styles
     import 'swiper/css';
     import 'swiper/css/navigation';
     import 'swiper/css/pagination';
+    import initSwiper from '../js/initSwiper';
 
     const swiperContainers = document.querySelectorAll('.timeline-swiper');
     swiperContainers.forEach((container) => {
-        const progressCircle: HTMLElement = container.querySelector(".autoplay-progress svg");
-        const progressContent: HTMLElement = container.querySelector(".autoplay-progress span");
-
-        function init() {
-            return new Swiper(container as HTMLElement, {
-                modules: [Navigation, Pagination, Autoplay],
-                slidesPerView: "auto",
-                centeredSlides: true,
-                grabCursor: true,
-                direction: 'horizontal',
-                spaceBetween: 16,
-                loop: true,
-
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false
-                },
-
-                // If we need pagination
-                pagination: {
-                    el: '.swiper-pagination',
-                    type: 'bullets',
-                    dynamicBullets: true,
-                },
-
-                // Navigation arrows
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-
-                // And if we need scrollbar
-                scrollbar: {
-                    el: '.swiper-scrollbar',
-                    draggable: true
-                },
-                on: {
-                    autoplayTimeLeft(s, time, progress) {
-                        progressCircle.style.setProperty("--progress", (1 - progress).toString());
-                        progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-                    }
-                }
-            } as any);
-        }
-
-        let swiper = init();
+        // let swiper = initSwiper(container);
         const fullscreen = container.querySelector('.fullscreen');
         const cont: HTMLElement = fullscreen.parentNode.parentNode as HTMLElement;
         fullscreen.addEventListener('click', () => {
             toggleSwiperFullScreen(fullscreen as HTMLElement, cont);
             setTimeout(() => {
-                swiper.autoplay.resume();
+                window.swiper.autoplay.resume();
             }, 100);
         })
     })
@@ -195,9 +147,11 @@ const {t} = useTranslations(Astro.url);
         if (isOpen) {
             modal.classList.remove('open');
             document.body.style.overflow = 'auto';
+            window.swiper?.destroy();
         } else {
             modal.classList.add('open');
             document.body.style.overflow = 'hidden';
+            window.swiper = initSwiper(modal.querySelector('.timeline-swiper'));
         }
     }
 
@@ -405,6 +359,9 @@ const {t} = useTranslations(Astro.url);
     .company-image {
       height: 45px;
       width: 45px;
+      border-radius: 8px;
+      border: 1px solid $logoBorder;
+      overflow: hidden;
     }
 
     .cross {

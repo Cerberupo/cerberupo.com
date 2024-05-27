@@ -82,6 +82,8 @@ const modalId = 'modal_' + _.uniqueId();
 </article>
 
 <script>
+    import initSwiper from "../js/initSwiper";
+
     const buttons = document.querySelectorAll('.timeline-card-button');
     buttons.forEach((button) => {
         button.addEventListener('click', () => {
@@ -90,9 +92,11 @@ const modalId = 'modal_' + _.uniqueId();
             if (isOpen) {
                 modal.classList.remove('open');
                 document.body.style.overflow = 'auto';
+                window.swiper?.destroy();
             } else {
                 modal.classList.add('open');
                 document.body.style.overflow = 'hidden';
+                window.swiper = initSwiper(button.parentNode.querySelector('.modal .timeline-swiper'));
             }
         })
     })

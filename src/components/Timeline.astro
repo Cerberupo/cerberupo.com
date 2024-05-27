@@ -47,6 +47,13 @@ const {t} = useTranslations(Astro.url);
                                         {side === 'right' &&
                                                 <>
                                                     <Box class="timeline-image-container">
+                                                        {project.noImage ?
+                                                                <Box class="no-image">
+                                                                    <Text fontSize={StyleFSEnum.FS16}
+                                                                          fontWeight={StyleFWEnum.REGULAR}>
+                                                                        {t('timeline.noImage')}
+                                                                    </Text>
+                                                                </Box> : ''}
                                                         <Image class="timeline-image" src={project.proyectImage}
                                                                alt={`${project.proyectName} project`} loading="eagle"/>
                                                     </Box>
@@ -177,6 +184,9 @@ const {t} = useTranslations(Astro.url);
   .company-image {
     max-width: 44px;
     max-height: 44px;
+    border: 1px solid $logoBorder;
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   .container-container {
@@ -196,8 +206,22 @@ const {t} = useTranslations(Astro.url);
   }
 
   .timeline-image-container {
-    align-self: stretch;
+    align-self: center;
+    position: relative;
     flex: 1;
+    overflow: hidden;
+    border-radius: 8px;
+
+    .no-image {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: $white;
+    }
 
     .timeline-image {
       width: 100%;
