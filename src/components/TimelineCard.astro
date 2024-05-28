@@ -54,7 +54,7 @@ const modalId = 'modal_' + _.uniqueId();
             {monthDiff()}&nbsp;{current ? t('timeline.card.current') : ''}
         </Text>
         {star ?
-                <Image class="star" src={Star} alt="Star"/> : ''}
+                <Image class="star" src={Star} loading="eagle" alt="Star"/> : ''}
 
     </Flex>
     <Spacer size={StyleSPEnum.SP8}/>
@@ -93,10 +93,25 @@ const modalId = 'modal_' + _.uniqueId();
                 modal.classList.remove('open');
                 document.body.style.overflow = 'auto';
                 window.swiper?.destroy();
+                if (window.videoInterval) {
+                    clearInterval(window.videoInterval);
+                    window.videoInterval = null;
+                }
             } else {
                 modal.classList.add('open');
                 document.body.style.overflow = 'hidden';
                 window.swiper = initSwiper(button.parentNode.querySelector('.modal .timeline-swiper'));
+                const modalVideo = modal.querySelector('video');
+                if (modalVideo) {
+                    window.videoInterval = setInterval(() => {
+                        if (modalVideo.paused && window.swiper.autoplay.paused) {
+                            window.swiper.autoplay.resume();
+                        }
+                        if (!modalVideo.paused && !window.swiper.autoplay.paused) {
+                            window.swiper.autoplay.pause();
+                        }
+                    }, 1000 / 10);
+                }
             }
         })
     })

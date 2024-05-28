@@ -134,11 +134,25 @@ export const es = {
                         '<br/><br/><b>· core.wannabot.io</b>: Proveedora de configuraciones generales de base de datos para evitar duplicaciones en otros proyectos.' +
                         '<br/><br/>Estas experiencias me han permitido desarrollar habilidades avanzadas en la creación de sistemas robustos y escalables, así como en la interacción directa con los usuarios para garantizar una experiencia de alta calidad. Cabe destacar que toda la implementación de las funcionalidades mencionadas fue realizada íntegramente por mí. '
                 },
+                demoagro: {
+                    name: 'Demoagro',
+                    position: 'Full Stack Developer',
+                    description: '',
+                    fullDescription: ''
+                },
                 miradatv: {
                     name: 'MiradaTV',
                     position: 'Frontend Developer',
-                    description: '',
-                    fullDescription: ''
+                    description: 'Desarrollé componentes en Angular 1 para su posterior renderizado desde una plataforma WordPress, siempre teniendo en cuenta las mejores prácticas de SEO.',
+                    fullDescription: 'Me encargué del desarrollo de componentes en Angular 1, diseñados específicamente para su integración y renderizado dentro de una plataforma WordPress. Este proceso implicó una cuidadosa planificación y ejecución para asegurar que los componentes fueran altamente eficientes y compatibles con el entorno de WordPress.' +
+                        '<br/><br/>Además, siempre mantuve en consideración las mejores prácticas de SEO, garantizando que los componentes fueran optimizados para los motores de búsqueda. Esto incluyó la correcta estructuración del código, el uso adecuado de etiquetas y atributos HTML, y la implementación de técnicas que mejoraran la indexación y visibilidad del contenido generado.'
+                },
+                abanca: {
+                    name: 'Abanca',
+                    position: 'Frontend Developer',
+                    description: 'Programé el frontend para una campaña publicitaria de ABANCA, implementando animaciones en CSS y utilizando JavaScript con TweenLite para algunas animaciones adicionales.',
+                    fullDescription: 'Programé toda la parte frontend para una campaña publicitaria de ABANCA, asegurando una experiencia visual atractiva y dinámica. Implementé todas las animaciones utilizando CSS para lograr transiciones suaves y efectivas, con algunas animaciones adicionales creadas con JavaScript con la ayuda de TweenLite.' +
+                        '<br/><br/>Esta tarea incluyó la creación de interfaces interactivas y visualmente impactantes que mejoraron el atractivo de la campaña y captaron la atención del público objetivo.'
                 }
             }
         },

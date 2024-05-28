@@ -101,6 +101,16 @@ import MiradaTV3 from '../images/miradatv/3.webp';
 import MiradaTV4 from '../images/miradatv/4.webp';
 import MiradaTV5 from '../images/miradatv/5.webp';
 import MiradaTV6 from '../images/miradatv/6.webp';
+import AbancaLogo from '../images/projects/abanca.svg';
+import AbancaVideo from '../images/abanca/video.mp4';
+import AbancaTimeline from '../images/abanca/timeline.webp';
+import Abanca1 from '../images/abanca/1.webp';
+import Abanca2 from '../images/abanca/2.webp';
+import Abanca3 from '../images/abanca/3.webp';
+import Abanca4 from '../images/abanca/4.webp';
+import Abanca5 from '../images/abanca/5.webp';
+import Abanca6 from '../images/abanca/6.webp';
+
 
 const {t, locale} = useTranslations(Astro.url);
 ---
@@ -336,7 +346,32 @@ const {t, locale} = useTranslations(Astro.url);
                 },
                 {
                     endDate: new Date('07/01/2017'),
-                    startDate: new Date('03/01/2017'),
+                    startDate: new Date('02/01/2017'),
+                    color: '#f08715',
+                    proyectLogo: MiradaTVLogo,
+                    proyectImage: MiradaTVTimeline,
+                    proyectName: t('company.flyingdonkey.project.demoagro.name'),
+                    proyectCardProps: {
+                        name: t('company.flyingdonkey.project.demoagro.name'),
+                        position: t('company.flyingdonkey.project.demoagro.position'),
+                        logo: MiradaTVLogo,
+                        description: t('company.flyingdonkey.project.demoagro.description'),
+                        fullDescription: t('company.flyingdonkey.project.demoagro.fullDescription'),
+                        tags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
+                        fullTags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
+                        images: [
+                            MiradaTV1,
+                            MiradaTV2,
+                            MiradaTV3,
+                            MiradaTV4,
+                            MiradaTV5,
+                            MiradaTV6
+                        ]
+                    }
+                },
+                {
+                    endDate: new Date('02/01/2017'),
+                    startDate: new Date('10/01/2016'),
                     color: '#f08715',
                     proyectLogo: MiradaTVLogo,
                     proyectImage: MiradaTVTimeline,
@@ -347,8 +382,8 @@ const {t, locale} = useTranslations(Astro.url);
                         logo: MiradaTVLogo,
                         description: t('company.flyingdonkey.project.miradatv.description'),
                         fullDescription: t('company.flyingdonkey.project.miradatv.fullDescription'),
-                        tags: [TagEnum.AWS, TagEnum.ANGULAR_JS, TagEnum.ANGULAR, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS],
-                        fullTags: [TagEnum.AWS_LAMBDA, TagEnum.AWS_S3, TagEnum.AWS_SES, TagEnum.AWS_IOT, TagEnum.AWS_GATEWAY, TagEnum.AWS_ROUTE53, TagEnum.AWS_EC2, TagEnum.AWS_IAM, TagEnum.ANGULAR_JS, TagEnum.ANGULAR, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS],
+                        tags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
+                        fullTags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
                         images: [
                             MiradaTV1,
                             MiradaTV2,
@@ -356,6 +391,32 @@ const {t, locale} = useTranslations(Astro.url);
                             MiradaTV4,
                             MiradaTV5,
                             MiradaTV6
+                        ]
+                    }
+                },
+                {
+                    endDate: new Date('10/01/2016'),
+                    startDate: new Date('09/01/2016'),
+                    color: '#f08715',
+                    proyectLogo: AbancaLogo,
+                    proyectImage: AbancaTimeline,
+                    proyectName: t('company.flyingdonkey.project.abanca.name'),
+                    proyectCardProps: {
+                        name: t('company.flyingdonkey.project.abanca.name'),
+                        position: t('company.flyingdonkey.project.abanca.position'),
+                        logo: AbancaLogo,
+                        description: t('company.flyingdonkey.project.abanca.description'),
+                        fullDescription: t('company.flyingdonkey.project.abanca.fullDescription'),
+                        tags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
+                        fullTags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
+                        video: AbancaVideo,
+                        images: [
+                            Abanca1,
+                            Abanca2,
+                            Abanca3,
+                            Abanca4,
+                            Abanca5,
+                            Abanca6
                         ]
                     }
                 }
