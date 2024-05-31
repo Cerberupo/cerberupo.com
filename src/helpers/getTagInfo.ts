@@ -31,6 +31,8 @@ import ECS from "../icons/tags/aws-ecs.svg";
 import ECR from "../icons/tags/aws-ecr.svg";
 import Postgresql from "../icons/tags/postgresql.svg";
 import Terraform from "../icons/tags/terraform.svg";
+import SQLite from "../icons/tags/sqlite.svg";
+import Leaflet from "../icons/tags/leaflet.svg";
 
 const tags = {
     [TagEnum.AWS_SES]: {
@@ -164,6 +166,14 @@ const tags = {
     [TagEnum.TERRAFORM]: {
         image: Terraform,
         name: 'Terraform',
+    },
+    [TagEnum.SQLITE]: {
+        image: SQLite,
+        name: 'SQLite',
+    },
+    [TagEnum.LEAFLET]: {
+        image: Leaflet,
+        name: 'Leaflet',
     },
 }
 

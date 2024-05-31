@@ -36,12 +36,6 @@ export default function initSwiper(container) {
         scrollbar: {
             el: '.swiper-scrollbar',
             draggable: true
-        },
-        on: {
-            autoplayTimeLeft(s, time, progress) {
-                progressCircle.style.setProperty("--progress", (1 - progress).toString());
-                progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-            }
         }
     });
 }

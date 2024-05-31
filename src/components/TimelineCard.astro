@@ -19,7 +19,7 @@ import _ from "lodash";
 interface Props extends TimelineCard {
 }
 
-const {star, name, position, logo, description, tags, endDate, startDate, current, company} = Astro.props;
+const {star, name, position, logo, longLogo, description, tags, endDate, startDate, current, company} = Astro.props;
 
 function monthDiff() {
     const months = endDate.getMonth() - startDate.getMonth() +
@@ -43,7 +43,7 @@ const modalId = 'modal_' + _.uniqueId();
 ---
 <article>
     <Flex gap={StyleSPEnum.SP8} alignItems={StyleAlignItemsEnum.CENTER}>
-        <Image class="logo" src={logo} alt={`${name} logo`} loading="eagle"/>
+        <Image class={`logo ${longLogo ? 'small' : ''}`} src={logo} alt={`${name} logo`} loading="eagle"/>
         <Text class="name" fontSize={StyleFSEnum.FS12}>
             {name}
         </Text>
@@ -120,6 +120,11 @@ const modalId = 'modal_' + _.uniqueId();
 <style lang="scss">
   @import "../styles/vars";
 
+  article {
+    padding-top: $sp16;
+    padding-bottom: $sp16;
+  }
+
   .star {
     width: 20px;
   }
@@ -142,5 +147,13 @@ const modalId = 'modal_' + _.uniqueId();
     width: 100%;
     background-color: #000000;
     opacity: 0.06;
+  }
+
+  @media all and (max-width: $mobileSmall) {
+    .logo {
+      &.small {
+        max-height: 16px;
+      }
+    }
   }
 </style>

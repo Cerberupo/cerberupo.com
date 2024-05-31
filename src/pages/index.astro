@@ -110,12 +110,23 @@ import Abanca3 from '../images/abanca/3.webp';
 import Abanca4 from '../images/abanca/4.webp';
 import Abanca5 from '../images/abanca/5.webp';
 import Abanca6 from '../images/abanca/6.webp';
-
+import DemoagroLogo from '../images/projects/demoagro.png';
+import DemoagroTimeline from '../images/demoagro/timeline.webp';
+import Demoagro1 from '../images/demoagro/1.webp';
+import Demoagro2 from '../images/demoagro/2.webp';
+import Demoagro3 from '../images/demoagro/3.webp';
+import Demoagro4 from '../images/demoagro/4.webp';
+import Demoagro5 from '../images/demoagro/5.webp';
+import Demoagro6 from '../images/demoagro/6.webp';
+import Demoagro7 from '../images/demoagro/7.webp';
+import IsdinTimeline from '../images/isdin/timeline.webp';
+import CatSection from "../components/CatSection.astro";
+import Footer from "../components/Footer.astro";
 
 const {t, locale} = useTranslations(Astro.url);
 ---
 
-<Layout title="Cerberupo">
+<Layout title={t('page.title')}>
     <Header/>
     <CodingSection/>
     <CareerSection/>
@@ -129,14 +140,16 @@ const {t, locale} = useTranslations(Astro.url);
                     endDate: new Date(),
                     startDate: new Date('02/01/2024'),
                     color: '#e3302b',
+                    noImage: true,
                     proyectLogo: IsdinLogo,
-                    proyectImage: LeemonsTimeline,
+                    proyectImage: IsdinTimeline,
                     proyectName: t('company.between.project.isdin.name'),
                     proyectCardProps: {
                         current: true,
                         name: t('company.between.project.isdin.name'),
                         position: t('company.between.project.isdin.position'),
                         logo: IsdinLogo,
+                        longLogo: true,
                         description: t('company.between.project.isdin.description'),
                         tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL],
                         fullTags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL],
@@ -199,6 +212,7 @@ const {t, locale} = useTranslations(Astro.url);
                         description: t('company.diga.project.eci.description'),
                         fullDescription: t('company.diga.project.eci.fullDescription'),
                         tags: [TagEnum.ANGULAR, TagEnum.HTML5, TagEnum.CSS3],
+                        fullTags: [TagEnum.ANGULAR, TagEnum.HTML5, TagEnum.CSS3],
                     }
                 },
                 {
@@ -215,6 +229,7 @@ const {t, locale} = useTranslations(Astro.url);
                         description: t('company.diga.project.clapp.description'),
                         fullDescription: t('company.diga.project.clapp.fullDescription'),
                         tags: [TagEnum.REACT_NATIVE],
+                        fullTags: [TagEnum.REACT_NATIVE],
                         images: [
                             CLApp1,
                             CLApp2,
@@ -246,6 +261,7 @@ const {t, locale} = useTranslations(Astro.url);
                         description: t('company.diga.project.clweb.description'),
                         fullDescription: t('company.diga.project.clweb.fullDescription'),
                         tags: [TagEnum.HTML5, TagEnum.CSS3],
+                        fullTags: [TagEnum.HTML5, TagEnum.CSS3],
                         images: [
                             CLWeb1,
                             CLWeb2,
@@ -277,9 +293,11 @@ const {t, locale} = useTranslations(Astro.url);
                         name: t('company.diga.project.mousee.name'),
                         position: t('company.diga.project.mousee.position'),
                         logo: MouseeLogo,
+                        longLogo: true,
                         description: t('company.diga.project.mousee.description'),
                         fullDescription: t('company.diga.project.mousee.fullDescription'),
                         tags: [TagEnum.NODE_JS, TagEnum.EXPRESS, TagEnum.ANGULAR, TagEnum.MONGO_DB],
+                        fullTags: [TagEnum.NODE_JS, TagEnum.EXPRESS, TagEnum.ANGULAR, TagEnum.MONGO_DB],
                         images: [
                             Mousee1,
                             Mousee2,
@@ -348,24 +366,26 @@ const {t, locale} = useTranslations(Astro.url);
                     endDate: new Date('07/01/2017'),
                     startDate: new Date('02/01/2017'),
                     color: '#f08715',
-                    proyectLogo: MiradaTVLogo,
-                    proyectImage: MiradaTVTimeline,
+                    proyectLogo: DemoagroLogo,
+                    proyectImage: DemoagroTimeline,
                     proyectName: t('company.flyingdonkey.project.demoagro.name'),
                     proyectCardProps: {
                         name: t('company.flyingdonkey.project.demoagro.name'),
                         position: t('company.flyingdonkey.project.demoagro.position'),
-                        logo: MiradaTVLogo,
+                        logo: DemoagroLogo,
+                        longLogo: true,
                         description: t('company.flyingdonkey.project.demoagro.description'),
                         fullDescription: t('company.flyingdonkey.project.demoagro.fullDescription'),
-                        tags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
-                        fullTags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
+                        tags: [TagEnum.IONIC, TagEnum.SQLITE, TagEnum.LEAFLET],
+                        fullTags: [TagEnum.IONIC, TagEnum.SQLITE, TagEnum.LEAFLET],
                         images: [
-                            MiradaTV1,
-                            MiradaTV2,
-                            MiradaTV3,
-                            MiradaTV4,
-                            MiradaTV5,
-                            MiradaTV6
+                            Demoagro1,
+                            Demoagro2,
+                            Demoagro3,
+                            Demoagro4,
+                            Demoagro5,
+                            Demoagro6,
+                            Demoagro7
                         ]
                     }
                 },
@@ -405,6 +425,7 @@ const {t, locale} = useTranslations(Astro.url);
                         name: t('company.flyingdonkey.project.abanca.name'),
                         position: t('company.flyingdonkey.project.abanca.position'),
                         logo: AbancaLogo,
+                        longLogo: true,
                         description: t('company.flyingdonkey.project.abanca.description'),
                         fullDescription: t('company.flyingdonkey.project.abanca.fullDescription'),
                         tags: [TagEnum.HTML5, TagEnum.CSS3, TagEnum.ANGULAR],
@@ -419,18 +440,12 @@ const {t, locale} = useTranslations(Astro.url);
                             Abanca6
                         ]
                     }
-                }
+                },
             ]
         }
     ]}/>
     <Spacer size={StyleSPEnum.SP128}/>
-    <Spacer size={StyleSPEnum.SP128}/>
-    <Spacer size={StyleSPEnum.SP128}/>
-    <Spacer size={StyleSPEnum.SP128}/>
-    <Spacer size={StyleSPEnum.SP128}/>
-    <Spacer size={StyleSPEnum.SP128}/>
+    <CatSection/>
+    <Spacer size={StyleSPEnum.SP64}/>
+    <Footer/>
 </Layout>
-
-<style>
-
-</style>

@@ -30,10 +30,12 @@ const {t} = useTranslations(Astro.url);
                             {getDate(t, company.projects[0].endDate)}
                         </Text>
                         <Spacer size={StyleSPEnum.SP8}/>
-                        <Text fontSize={StyleFSEnum.FS16} fontWeight={StyleFWEnum.REGULAR}>
-                            {company.name}
-                        </Text>
-                        <Spacer size={StyleSPEnum.SP4}/>
+                        <Box class="company-name">
+                            <Text fontSize={StyleFSEnum.FS16} fontWeight={StyleFWEnum.REGULAR}>
+                                {company.name}
+                            </Text>
+                            <Spacer size={StyleSPEnum.SP4}/>
+                        </Box>
                         <Image class="company-image" src={company.logo}
                                alt={`${company.name} logo`} loading="eagle"/>
                         <Spacer size={StyleSPEnum.SP4}/>
@@ -298,6 +300,9 @@ const {t} = useTranslations(Astro.url);
   }
 
   @media all and (max-width: $mobileSmall) {
+    .company-name {
+      display: none;
+    }
     .company-proyect {
       padding-left: $centerWidth2;
 

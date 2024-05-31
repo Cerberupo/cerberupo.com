@@ -1,4 +1,9 @@
 export const es = {
+    page: {
+        title: 'CV - FullStack Developer',
+        description: 'Desarrollador Full Stack con experiencia en la creación y gestión de bots, API\'s y aplicaciones web utilizando NodeJS y otras tecnologías. Capaz de manejar múltiples plataformas y asegurar la optimización y seguridad de los proyectos.',
+        keywords: 'Desarrollador, Bots, API\'s, NodeJS, Facebook Messenger, Telegram, Line, Slack, SEO, Seguridad, Monitoreo en Tiempo Real, Widgets, Backend, Desarrollo Web, AngularJS, ReactJS'
+    },
     header: {
         imageAlt: 'Imagen de mi',
         fullstack: 'Desarrollador Full Stack',
@@ -137,8 +142,10 @@ export const es = {
                 demoagro: {
                     name: 'Demoagro',
                     position: 'Full Stack Developer',
-                    description: '',
-                    fullDescription: ''
+                    description: 'Desarrollé la app híbrida para Demoagro utilizando Ionic, con soporte offline. La aplicación se sincronizaba y almacenaba datos en SQLite cuando había conexión a Internet, permitiendo su uso en áreas rurales sin cobertura. Incluía un mapa previamente descargado, renderizado con Leaflet, que mostraba la ubicación de los expositores y utilizaba el GPS para navegación.',
+                    fullDescription: 'Lideré el desarrollo de una aplicación híbrida para Demoagro utilizando Ionic, diseñada específicamente para operar eficientemente en entornos rurales con poca o ninguna conectividad a Internet. La aplicación ofrecía soporte offline completo, sincronizándose automáticamente y almacenando datos en una base de datos SQLite cada vez que se establecía una conexión a Internet. Esto garantizaba que los usuarios pudieran acceder y registrar información de manera confiable durante los eventos, independientemente de la disponibilidad de la red.' +
+                        '<br/><br/>Además, la aplicación incluía un mapa previamente descargado de la zona del evento, renderizado con Leaflet. Este mapa permitía a los usuarios localizar expositores y, utilizando la funcionalidad GPS integrada, proporcionaba direcciones precisas para navegar dentro del área del evento. La integración de Leaflet aseguraba una experiencia de usuario fluida y eficiente, facilitando la navegación y mejorando la interacción en el evento.' +
+                        '<br/><br/>Este proyecto no solo mejoró la accesibilidad y funcionalidad para los asistentes de Demoagro, sino que también demostró mi capacidad para diseñar y desarrollar soluciones tecnológicas adaptadas a condiciones específicas y desafiantes.'
                 },
                 miradatv: {
                     name: 'MiradaTV',
@@ -168,6 +175,11 @@ export const es = {
             imageAlt: 'Carrera programador',
             description1: 'Inicié mi carrera laboral como programador PHP con MySQL, utilizando WordPress como plataforma, sin tener experiencia previa en el lenguaje. Posteriormente, mi curiosidad me llevó a adentrarme en el mundo de los frameworks, donde trabajé con Angular 1 y más tarde con Angular 2+, para el desarrollo frontend y utilizando Node.js junto con MongoDB para el backend.',
             description2: 'Con el tiempo, mi enfoque se ha desplazado hacia tecnologías más modernas, y en la actualidad, me encuentro inmerso en proyectos que emplean React para el frontend y Node.js con MongoDB o MySQL para el backend, siempre integrando soluciones y servicios de AWS para garantizar la fiabilidad y la seguridad de las aplicaciones. Este recorrido diverso me ha proporcionado una amplia experiencia y habilidades técnicas que me han permitido adaptarme con éxito a las demandas cambiantes del campo del desarrollo de software.'
+        },
+        cat: {
+            cat: 'Cat animation',
+            date: 'Septiembre 2016 - Julio 2015',
+            description: 'Este fue el inicio de mi carrera. Después de estudiar durante cuatro años, donde aprendí a trabajar con Java, Oracle, HTML, CSS y JavaScript, comencé a trabajar con PHP y WordPress. Aunque al principio no tenía experiencia en estas tecnologías, me esforcé al máximo por aprender y dar lo mejor de mí.'
         }
     }
 };

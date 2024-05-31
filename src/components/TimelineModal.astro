@@ -29,6 +29,7 @@ const {
     company,
     fullTags,
     logo,
+    longLogo,
     images,
     fullDescription,
     video,
@@ -46,7 +47,7 @@ const {t} = useTranslations(Astro.url);
         <header>
             <Image class="company-image" src={company.logo}
                    alt={`${company.name} logo`} loading="eagle"/>
-            <Text fontSize={StyleFSEnum.FS24}>
+            <Text fontSize={{default: StyleFSEnum.FS24, mobile: StyleFSEnum.FS16}}>
                 {company.name}
             </Text>
             {star ?
@@ -55,7 +56,7 @@ const {t} = useTranslations(Astro.url);
         </header>
         <Box class="project">
             <Flex gap={StyleSPEnum.SP16} alignItems={StyleAlignItemsEnum.CENTER}>
-                <Image class="project-logo" src={logo} alt="Project logo" loading="eagle"/>
+                <Image class={`project-logo ${longLogo ? 'small' : ''}`} src={logo} alt="Project logo" loading="eagle"/>
                 <Text class="name" fontSize={StyleFSEnum.FS20}>
                     {position}
                 </Text>
@@ -63,7 +64,7 @@ const {t} = useTranslations(Astro.url);
             <Flex gap={StyleSPEnum.SP4} alignItems={StyleAlignItemsEnum.CENTER}>
                 <Image class="calendar-icon" src={Calendar} alt="Calendar icon" loading="eagle"/>
                 <Text fontSize={StyleFSEnum.FS14}>
-                    {getDate(t, startDate)} - {getDate(t, endDate)}
+                    {getDate(t, startDate)} <span class="separator"><span>-</span></span> {getDate(t, endDate)}
                 </Text>
             </Flex>
         </Box>
@@ -94,13 +95,6 @@ const {t} = useTranslations(Astro.url);
                             <Image class="open" src={Fullscreen} loading="eagle" alt="Fullscreen"/>
                             <Image class="close" src={CloseFullscreen} loading="eagle" alt="Close fullscreen"/>
                         </Box>
-
-                        <div class="autoplay-progress">
-                            <svg viewBox="0 0 48 48">
-                                <circle cx="24" cy="24" r="20"></circle>
-                            </svg>
-                            <span></span>
-                        </div>
                     </div> : ''}
 
             <Box class="content">
@@ -254,8 +248,23 @@ const {t} = useTranslations(Astro.url);
     background-color: $white;
     border-radius: 16px;
     padding: 6px;
-    border: 1px solid $dark;
+    border: 1px solid $swiper;
+    width: 86px !important;
+
+    :global(.swiper-pagination-bullet) {
+      width: 10px;
+      height: 10px;
+      border: 1px solid $swiper;
+      transform: scale(1);
+      background-color: $white;
+      opacity: 1;
+
+      &.swiper-pagination-bullet-active-main {
+        background-color: $swiper !important;
+      }
+    }
   }
+
 
   .swiper-button-prev, .swiper-button-next {
     width: 45px;
@@ -265,7 +274,7 @@ const {t} = useTranslations(Astro.url);
     align-items: center;
     border-radius: 50%;
     background-color: $white;
-    border: 1px solid $dark;
+    border: 1px solid $swiper;
 
     img {
       width: 28px;
@@ -295,43 +304,11 @@ const {t} = useTranslations(Astro.url);
     background-color: $white;
     border-radius: 50%;
     cursor: pointer;
-    border: 1px solid $dark;
+    border: 1px solid $swiper;
 
     .close {
       display: none;
     }
-  }
-
-  .autoplay-progress {
-    position: absolute;
-    right: var(--swiper-navigation-sides-offset, 10px);
-    bottom: 16px;
-    z-index: 10;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    color: $dark;
-    background-color: $white;
-    border-radius: 50%;
-  }
-
-  .autoplay-progress svg {
-    --progress: 0;
-    position: absolute;
-    left: 0;
-    top: 0;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    stroke-width: 4px;
-    stroke: $dark;
-    fill: none;
-    stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
-    stroke-dasharray: 125.6;
-    transform: rotate(-90deg);
   }
 
   .swiper {
@@ -431,10 +408,33 @@ const {t} = useTranslations(Astro.url);
     z-index: 21;
     top: 0;
     right: 0;
-    width: 800px;
+    max-width: 800px;
+    width: 100%;
     height: 100vh;
     background-color: $white;
     transition: 300ms ease;
     transform: translateX(100%);
+  }
+
+  @media all and (max-width: $mobileSmall) {
+    .project {
+      .project-logo {
+        &.small {
+          height: 24px;
+        }
+      }
+
+      .name {
+        display: none;
+      }
+    }
+    .separator {
+      display: block;
+      height: $sp4;
+
+      > span {
+        display: none;
+      }
+    }
   }
 </style>

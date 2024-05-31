@@ -31,5 +31,7 @@ export enum TagEnum {
     AWS_ECS = 'ecs',
     AWS_ECR = 'ecr',
     POSTGRESQL = 'postgresql',
-    TERRAFORM = 'terraform'
+    TERRAFORM = 'terraform',
+    SQLITE = 'sqlite',
+    LEAFLET = 'leaflet'
 }
