@@ -57,7 +57,7 @@ export const es = {
             name: 'Leemons Edtech Solutions',
             project: {
                 leemons: {
-                    name: 'Leemons',
+                    name: '[SASS] Leemons',
                     position: 'Full Stack Lead Developer',
                     description: 'En colaboración con un pequeño equipo, desarrollamos una solución SaaS para revolucionar el futuro de la educación en línea. Fui uno de los desarrolladores principales y creé aplicaciones como un "Trello", un "Google Calendar", un "WhatsApp" y más, a una velocidad vertiginosa 🚀',
                     fullDescription: '' +
@@ -119,7 +119,7 @@ export const es = {
             name: 'Flying donkey',
             project: {
                 wannabot: {
-                    name: 'Wannabot',
+                    name: '[SASS] Wannabot',
                     position: 'Full Stack Developer',
                     description: 'Lideré y desarrollé íntegramente el proyecto más ambicioso de la empresa, creando desde cero una plataforma SaaS completa para la creación de chatbots. Implementé la personalización total de los chatbots y su creación mediante una potente interfaz basada en cartas, conexiones y condiciones, integrándolos con múltiples plataformas de mensajería como Telegram, WhatsApp y muchas más funcionalidades.' +
                         '<br/><br/>Además, desarrollé un sistema de gestión de agentes en vivo en tiempo real, permitiendo una transición fluida entre chatbots y agentes humanos. También diseñé un widget que, con una sola línea de código JavaScript, permite integrar el chat en cualquier página web.',

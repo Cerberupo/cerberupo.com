@@ -33,6 +33,7 @@ import Postgresql from "../icons/tags/postgresql.svg";
 import Terraform from "../icons/tags/terraform.svg";
 import SQLite from "../icons/tags/sqlite.svg";
 import Leaflet from "../icons/tags/leaflet.svg";
+import Typescript from '../icons/tags/typescript.svg';
 
 const tags = {
     [TagEnum.AWS_SES]: {
@@ -174,6 +175,10 @@ const tags = {
     [TagEnum.LEAFLET]: {
         image: Leaflet,
         name: 'Leaflet',
+    },
+    [TagEnum.TYPESCRIPT]: {
+        image: Typescript,
+        name: 'Typescript',
     },
 }
 

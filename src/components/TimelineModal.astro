@@ -46,23 +46,23 @@ const {t} = useTranslations(Astro.url);
     <Box class="modal-container">
         <header>
             <Image class="company-image" src={company.logo}
-                   alt={`${company.name} logo`} loading="eagle"/>
+                   alt={`${company.name} logo`} loading="eager"/>
             <Text fontSize={{default: StyleFSEnum.FS24, mobile: StyleFSEnum.FS16}}>
                 {company.name}
             </Text>
             {star ?
-                    <Image class="star" src={Star} alt="Star" loading="eagle"/> : ''}
-            <Image class="cross" src={Cross} alt="Cross icon" loading="eagle"/>
+                    <Image class="star" src={Star} alt="Star" loading="eager"/> : ''}
+            <Image class="cross" src={Cross} alt="Cross icon" loading="eager"/>
         </header>
         <Box class="project">
             <Flex gap={StyleSPEnum.SP16} alignItems={StyleAlignItemsEnum.CENTER}>
-                <Image class={`project-logo ${longLogo ? 'small' : ''}`} src={logo} alt="Project logo" loading="eagle"/>
+                <Image class={`project-logo ${longLogo ? 'small' : ''}`} src={logo} alt="Project logo" loading="eager"/>
                 <Text class="name" fontSize={StyleFSEnum.FS20}>
                     {position}
                 </Text>
             </Flex>
             <Flex gap={StyleSPEnum.SP4} alignItems={StyleAlignItemsEnum.CENTER}>
-                <Image class="calendar-icon" src={Calendar} alt="Calendar icon" loading="eagle"/>
+                <Image class="calendar-icon" src={Calendar} alt="Calendar icon" loading="eager"/>
                 <Text fontSize={StyleFSEnum.FS14}>
                     {getDate(t, startDate)} <span class="separator"><span>-</span></span> {getDate(t, endDate)}
                 </Text>
@@ -79,21 +79,21 @@ const {t} = useTranslations(Astro.url);
                                     </div> : ''}
                             {images?.map((src, i) =>
                                     <div class="swiper-slide">
-                                        <Image src={src} loading="eagle" alt={`Slide ${i + 1}`}/>
+                                        <Image src={src} loading="eager" alt={`Slide ${i + 1}`}/>
                                     </div>
                             )}
                         </div>
                         <div class="swiper-pagination"></div>
                         <div class="swiper-button-prev">
-                            <Image src={ChevronLeft} loading="eagle" alt="<"/>
+                            <Image src={ChevronLeft} loading="eager" alt="<"/>
                         </div>
                         <div class="swiper-button-next">
-                            <Image src={ChevronRight} loading="eagle" alt=">"/>
+                            <Image src={ChevronRight} loading="eager" alt=">"/>
                         </div>
 
                         <Box class="fullscreen">
-                            <Image class="open" src={Fullscreen} loading="eagle" alt="Fullscreen"/>
-                            <Image class="close" src={CloseFullscreen} loading="eagle" alt="Close fullscreen"/>
+                            <Image class="open" src={Fullscreen} loading="eager" alt="Fullscreen"/>
+                            <Image class="close" src={CloseFullscreen} loading="eager" alt="Close fullscreen"/>
                         </Box>
                     </div> : ''}
 

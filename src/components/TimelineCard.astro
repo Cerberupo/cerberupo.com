@@ -43,7 +43,7 @@ const modalId = 'modal_' + _.uniqueId();
 ---
 <article>
     <Flex gap={StyleSPEnum.SP8} alignItems={StyleAlignItemsEnum.CENTER}>
-        <Image class={`logo ${longLogo ? 'small' : ''}`} src={logo} alt={`${name} logo`} loading="eagle"/>
+        <Image class={`logo ${longLogo ? 'small' : ''}`} src={logo} alt={`${name} logo`} loading="eager"/>
         <Text class="name" fontSize={StyleFSEnum.FS12}>
             {name}
         </Text>
@@ -54,7 +54,7 @@ const modalId = 'modal_' + _.uniqueId();
             {monthDiff()}&nbsp;{current ? t('timeline.card.current') : ''}
         </Text>
         {star ?
-                <Image class="star" src={Star} loading="eagle" alt="Star"/> : ''}
+                <Image class="star" src={Star} loading="eager" alt="Star"/> : ''}
 
     </Flex>
     <Spacer size={StyleSPEnum.SP8}/>

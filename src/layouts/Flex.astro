@@ -9,12 +9,12 @@ import {StyleFlexDirectionEnum} from "../styles/enums/flex-direction.enum";
 import {StyleJustifyContentEnum} from "../styles/enums/justify-content.enum";
 import {getElementMediaQueryData} from "../helpers/getElementMediaQueryData";
 interface Props {
-    alignItems: StyleAlignItemsEnum | MediaQuery<StyleAlignItemsEnum>;
-    justifyContent: StyleJustifyContentEnum | MediaQuery<StyleJustifyContentEnum>;
-    gap: StyleSPEnum | MediaQuery<StyleSPEnum>;
-    direction: StyleFlexDirectionEnum | MediaQuery<StyleFlexDirectionEnum>;
-    wrap: StyleFlexWrapEnum | MediaQuery<StyleFlexWrapEnum>
-    class: string;
+    alignItems?: StyleAlignItemsEnum | MediaQuery<StyleAlignItemsEnum>;
+    justifyContent?: StyleJustifyContentEnum | MediaQuery<StyleJustifyContentEnum>;
+    gap?: StyleSPEnum | MediaQuery<StyleSPEnum>;
+    direction?: StyleFlexDirectionEnum | MediaQuery<StyleFlexDirectionEnum>;
+    wrap?: StyleFlexWrapEnum | MediaQuery<StyleFlexWrapEnum>
+    class?: string;
 }
 
 let {alignItems, justifyContent, wrap, gap, direction, class: _class, ...rest} = Astro.props;

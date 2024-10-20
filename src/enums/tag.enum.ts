@@ -33,5 +33,6 @@ export enum TagEnum {
     POSTGRESQL = 'postgresql',
     TERRAFORM = 'terraform',
     SQLITE = 'sqlite',
-    LEAFLET = 'leaflet'
+    LEAFLET = 'leaflet',
+    TYPESCRIPT = 'typescript'
 }

@@ -23,7 +23,7 @@ const {t} = useTranslations(Astro.url);
         <Flex direction={{tabletH: StyleFlexDirectionEnum.COLUMN, default: StyleFlexDirectionEnum.ROW}}
               alignItems={StyleAlignItemsEnum.CENTER}
               gap={{default: StyleSPEnum.SP64, mobile: StyleSPEnum.SP32}}>
-            <Image src={ImageOfMe} alt={t('header.imageAlt')} loading="eagle"/>
+            <Image src={ImageOfMe} alt={t('header.imageAlt')} loading="eager"/>
             <Box>
                 <Text as="h1" fontSize={{default: StyleFSEnum.FS32, mobile: StyleFSEnum.FS24}}
                       fontWeight={StyleFWEnum.MEDIUM}>

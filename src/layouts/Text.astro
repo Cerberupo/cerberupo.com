@@ -7,11 +7,11 @@ import Box from "./Box.astro";
 import {AsEnum} from "../enums/as.enum";
 import {getElementMediaQueryData} from "../helpers/getElementMediaQueryData";
 interface Props {
-    as: AsEnum;
-    class: string;
-    fontSize: StyleFSEnum | MediaQuery<StyleFSEnum>;
-    fontWeight: StyleFWEnum | MediaQuery<StyleFWEnum>;
-    styleVars: any;
+    as?: AsEnum;
+    class?: string;
+    fontSize?: StyleFSEnum | MediaQuery<StyleFSEnum>;
+    fontWeight?: StyleFWEnum | MediaQuery<StyleFWEnum>;
+    styleVars?: any;
 }
 
 let {fontSize, fontWeight, styleVars: styles, class: _class, as, ...rest} = Astro.props;

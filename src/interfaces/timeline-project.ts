@@ -7,7 +7,7 @@ export interface TimelineProject {
     proyectLogo: any;
     proyectCardProps: TimelineCard;
     proyectImage: any;
-    noImage: boolean;
+    noImage?: boolean;
     color: string;
     side?: 'right' | 'left';
 }
