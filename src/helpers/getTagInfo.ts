@@ -34,6 +34,7 @@ import Terraform from "../icons/tags/terraform.svg";
 import SQLite from "../icons/tags/sqlite.svg";
 import Leaflet from "../icons/tags/leaflet.svg";
 import Typescript from '../icons/tags/typescript.svg';
+import Docker from '../icons/tags/docker.svg';
 
 const tags = {
     [TagEnum.AWS_SES]: {
@@ -179,6 +180,10 @@ const tags = {
     [TagEnum.TYPESCRIPT]: {
         image: Typescript,
         name: 'Typescript',
+    },
+    [TagEnum.DOCKER]: {
+        image: Docker,
+        name: 'Docker',
     },
 }
 

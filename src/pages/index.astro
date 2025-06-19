@@ -138,6 +138,26 @@ const {t, locale} = useTranslations(Astro.url);
             projects: [
                 {
                     endDate: new Date(),
+                    startDate: new Date('11/01/2024'),
+                    color: '#e3302b',
+                    noImage: true,
+                    proyectLogo: IsdinLogo,
+                    proyectImage: IsdinTimeline,
+                    proyectName: t('company.between.project.isdin_lead.name'),
+                    proyectCardProps: {
+                        current: true,
+                        name: t('company.between.project.isdin_lead.name'),
+                        position: t('company.between.project.isdin_lead.position'),
+                        logo: IsdinLogo,
+                        longLogo: true,
+                        description: t('company.between.project.isdin_lead.description'),
+                        tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL, TagEnum.TYPESCRIPT, TagEnum.DOCKER],
+                        fullTags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL, TagEnum.TYPESCRIPT, TagEnum.DOCKER, TagEnum.REDIS, TagEnum.MONGO_DB],
+                        fullDescription: t('company.between.project.isdin_lead.fullDescription'),
+                    }
+                },
+                {
+                    endDate: new Date('11/01/2024'),
                     startDate: new Date('02/01/2024'),
                     color: '#e3302b',
                     noImage: true,
@@ -145,14 +165,14 @@ const {t, locale} = useTranslations(Astro.url);
                     proyectImage: IsdinTimeline,
                     proyectName: t('company.between.project.isdin.name'),
                     proyectCardProps: {
-                        current: true,
+                        current: false,
                         name: t('company.between.project.isdin.name'),
                         position: t('company.between.project.isdin.position'),
                         logo: IsdinLogo,
                         longLogo: true,
                         description: t('company.between.project.isdin.description'),
-                        tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL, TagEnum.TYPESCRIPT],
-                        fullTags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL, TagEnum.TYPESCRIPT],
+                        tags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL, TagEnum.TYPESCRIPT, TagEnum.DOCKER],
+                        fullTags: [TagEnum.AWS, TagEnum.REACT, TagEnum.NEXT, TagEnum.NODE_JS, TagEnum.NEST, TagEnum.POSTGRESQL, TagEnum.TYPESCRIPT, TagEnum.DOCKER],
                         fullDescription: t('company.between.project.isdin.fullDescription'),
                     }
                 }
@@ -177,8 +197,8 @@ const {t, locale} = useTranslations(Astro.url);
                         logo: LeemonsLogo,
                         description: t('company.leemons.project.leemons.description'),
                         fullDescription: t('company.leemons.project.leemons.fullDescription'),
-                        tags: [TagEnum.AWS, TagEnum.TERRAFORM, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS],
-                        fullTags: [TagEnum.TERRAFORM, TagEnum.AWS_SES, TagEnum.AWS_ECS, TagEnum.AWS_ECR, TagEnum.AWS_IOT, TagEnum.AWS_ATHENA, TagEnum.AWS_ROUTE53, TagEnum.AWS_CLOUDFRONT, TagEnum.AWS_GATEWAY, TagEnum.AWS_S3, TagEnum.AWS_IAM, TagEnum.AWS_LAMBDA, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS, TagEnum.NEXT],
+                        tags: [TagEnum.AWS, TagEnum.TERRAFORM, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS, TagEnum.DOCKER],
+                        fullTags: [TagEnum.TERRAFORM, TagEnum.AWS_SES, TagEnum.AWS_ECS, TagEnum.AWS_ECR, TagEnum.AWS_IOT, TagEnum.AWS_ATHENA, TagEnum.AWS_ROUTE53, TagEnum.AWS_CLOUDFRONT, TagEnum.AWS_GATEWAY, TagEnum.AWS_S3, TagEnum.AWS_IAM, TagEnum.AWS_LAMBDA, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.REDIS, TagEnum.NEXT, TagEnum.DOCKER],
                         images: [
                             Leemons1,
                             Leemons2,

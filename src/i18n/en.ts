@@ -45,6 +45,12 @@ export const en = {
         between: {
             name: 'Between Technology',
             project: {
+                isdin_lead: {
+                    name: 'Isdin',
+                    position: 'Full Stack Lead Developer',
+                    description: 'Technical lead with experience in team mentorship, code reviews, technical planning, and cross-functional coordination. Focused on software quality, development efficiency, and delivering technically sound solutions aligned with product objectives.',
+                    fullDescription: 'As the technical lead of the team, I’m responsible for onboarding and mentoring new team members, promoting best development practices and fostering a culture of continuous learning. I conduct thorough code reviews, identifying common issues and suggesting improvements in architecture, style, and performance to ensure clean, maintainable code. I handle the distribution of technical tasks, aligning them with each developer’s strengths and growth areas. I actively participate in time estimations to help plan realistic release cycles, working closely with the product team. Additionally, I serve as a bridge between business and design, facilitating clear communication across teams and proposing technical solutions that balance feasibility with product goals.'
+                },
                 isdin: {
                     name: 'Isdin',
                     position: 'Full Stack Developer',

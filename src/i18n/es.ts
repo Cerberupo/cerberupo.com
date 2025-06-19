@@ -45,6 +45,12 @@ export const es = {
         between: {
             name: 'Between Technology',
             project: {
+                isdin_lead: {
+                    name: 'Isdin',
+                    position: 'Full Stack Lead Developer',
+                    description: 'Líder técnico con experiencia en formación de equipo, revisión de código, planificación técnica y coordinación entre negocio y diseño. Enfocado en la calidad del software, la eficiencia del desarrollo y la entrega de soluciones técnicamente viables alineadas con los objetivos del producto.',
+                    fullDescription: 'Como líder técnico del equipo, me encargo de la incorporación y formación de nuevos integrantes, transmitiendo las mejores prácticas en desarrollo y fomentando un entorno de aprendizaje continuo. Realizo revisiones de código exhaustivas, donde detecto errores comunes y propongo mejoras a nivel de arquitectura, estilo y rendimiento, promoviendo un código limpio y mantenible. Me ocupo de distribuir las tareas técnicas de manera equilibrada, ajustándolas a las fortalezas y áreas de crecimiento de cada desarrollador. Participo activamente en la estimación de tiempos para planificar entregas realistas, colaborando estrechamente con el equipo de producto. Además, sirvo de enlace entre negocio y diseño, asegurando una comunicación fluida entre todas las partes y proponiendo soluciones técnicas que equilibren la viabilidad del desarrollo con los objetivos del producto.'
+                },
                 isdin: {
                     name: 'Isdin',
                     position: 'Full Stack Developer',
