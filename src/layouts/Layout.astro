@@ -12,7 +12,6 @@ const {locale, t} = useTranslations(Astro.url);
 <html lang={locale}>
 <head>
     <meta charset="UTF-8"/>
-    <meta name="description" content="Astro description"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"/>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -28,7 +27,7 @@ const {locale, t} = useTranslations(Astro.url);
           rel="stylesheet">
     <title>{title}</title>
     <meta name="description" content={t('page.description')}>
-    <meta name="keywords" content={t('page.description')}>
+    <meta name="keywords" content={t('page.keywords')}>
     <meta name="author" content="Jaime Gómez Cimarro">
 </head>
 <body>
