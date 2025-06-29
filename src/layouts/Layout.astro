@@ -30,6 +30,23 @@ const {locale, t} = useTranslations(Astro.url);
     <meta name="keywords" content={t('page.keywords')}>
     <meta name="author" content="Jaime Gómez Cimarro">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YNJF45CH7L"/>
+<script>
+    // @ts-ignore
+    window.dataLayer = window.dataLayer || [];
+
+    // @ts-ignore
+    function gtag() {
+        // @ts-ignore
+        dataLayer.push(arguments);
+    }
+
+    // @ts-ignore
+    gtag('js', new Date());
+    // @ts-ignore
+    gtag('config', 'G-YNJF45CH7L');
+</script>
 <body>
 <slot/>
 </body>
