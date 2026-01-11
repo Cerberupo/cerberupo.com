@@ -35,8 +35,13 @@ import SQLite from "../icons/tags/sqlite.svg";
 import Leaflet from "../icons/tags/leaflet.svg";
 import Typescript from '../icons/tags/typescript.svg';
 import Docker from '../icons/tags/docker.svg';
+import OpenAI from '../icons/tags/open-ai.svg';
 
 const tags = {
+    [TagEnum.OPEN_AI]: {
+        image: OpenAI,
+        name: 'OPEN AI'
+    },
     [TagEnum.AWS_SES]: {
         image: SES,
         name: 'AWS - SES'

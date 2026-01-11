@@ -42,6 +42,18 @@ export const es = {
         }
     },
     company: {
+        brickify: {
+            name: 'Brickify',
+            project: {
+                brickify: {
+                    name: 'Brickify',
+                    position: 'CEO & Co-Founder',
+                    description: 'Creé Brickify para recomendar las piezas de minifiguras tipo LEGO que más se parecen a cada persona, de forma rápida y sencilla.',
+                    fullDescription: 'Brickify nació de una experiencia personal: <br/> en nuestra boda, creamos minifiguras de LEGO personalizadas para cada invitado y las colocamos directamente en las mesas. <br/><br/> Ver las reacciones y cómo la gente compartía fotos de las figuras después del evento nos mostró lo valioso que puede ser un detalle personal. <br/><br/> Sin embargo, buscar y combinar las piezas correctas para cada persona fue extremadamente laborioso.' +
+                        '<br/><br/> Por eso desarrollé Brickify: una plataforma que sugiere automáticamente las piezas de minifiguras LEGO que más se parecen a cada persona, simplificando el proceso y haciéndolo rápido, intuitivo y divertido. <br/><br/> El frontend está desarrollado con React y Astro, mientras que el backend corre sobre Express en AWS Lambda, usando MongoDB como base de datos. <br/><br/> Toda la arquitectura está diseñada para ser escalable y segura; el frontend se sirve desde AWS S3 con CloudFront, protegido con AWS WAF. <br/><br/> Cuando un usuario realiza un pedido, se envía la imagen del usuario a un motor de IA que analiza la foto y busca las piezas más parecidas a la persona. <br/><br/> Después, se muestra en el frontend una previsualización de cómo quedaría la minifigura LEGO. Brickify permite crear minifiguras personalizadas para bodas, regalos, eventos o simplemente por diversión, combinando creatividad, experiencia y tecnología para generar recuerdos únicos y memorables. <br/><br/> Accede a la web: <a style="color: #333333" href="https://brickify.fun">https://brickify.fun</a>'
+                }
+            }
+        },
         between: {
             name: 'Between Technology',
             project: {
@@ -49,13 +61,19 @@ export const es = {
                     name: 'Isdin',
                     position: 'Full Stack Lead Developer',
                     description: 'Líder técnico con experiencia en formación de equipo, revisión de código, planificación técnica y coordinación entre negocio y diseño. Enfocado en la calidad del software, la eficiencia del desarrollo y la entrega de soluciones técnicamente viables alineadas con los objetivos del producto.',
-                    fullDescription: 'Como líder técnico del equipo, me encargo de la incorporación y formación de nuevos integrantes, transmitiendo las mejores prácticas en desarrollo y fomentando un entorno de aprendizaje continuo. Realizo revisiones de código exhaustivas, donde detecto errores comunes y propongo mejoras a nivel de arquitectura, estilo y rendimiento, promoviendo un código limpio y mantenible. Me ocupo de distribuir las tareas técnicas de manera equilibrada, ajustándolas a las fortalezas y áreas de crecimiento de cada desarrollador. Participo activamente en la estimación de tiempos para planificar entregas realistas, colaborando estrechamente con el equipo de producto. Además, sirvo de enlace entre negocio y diseño, asegurando una comunicación fluida entre todas las partes y proponiendo soluciones técnicas que equilibren la viabilidad del desarrollo con los objetivos del producto.'
+                    fullDescription: 'Como líder técnico del equipo, me encargo de la incorporación y formación de nuevos integrantes, transmitiendo las mejores prácticas en desarrollo y fomentando un entorno de aprendizaje continuo. <br/><br/>\n' +
+                        'Realizo revisiones de código exhaustivas, donde detecto errores comunes y propongo mejoras a nivel de arquitectura, estilo y rendimiento, promoviendo un código limpio y mantenible. <br/><br/>\n' +
+                        'Me ocupo de distribuir las tareas técnicas de manera equilibrada, ajustándolas a las fortalezas y áreas de crecimiento de cada desarrollador. <br/><br/>\n' +
+                        'Participo activamente en la estimación de tiempos para planificar entregas realistas, colaborando estrechamente con el equipo de producto. <br/><br/>\n' +
+                        'Además, sirvo de enlace entre negocio y diseño, asegurando una comunicación fluida entre todas las partes y proponiendo soluciones técnicas que equilibren la viabilidad del desarrollo con los objetivos del producto.'
                 },
                 isdin: {
                     name: 'Isdin',
                     position: 'Full Stack Developer',
                     description: 'Ingresé como apoyo, encargado de asistir a los compañeros más junior de mi equipo y de desarrollar nuevas funcionalidades, así como optimizar las existentes, siempre con un enfoque en la calidad del código.',
-                    fullDescription: 'Ingresé como apoyo clave en mi equipo, encargado de asistir y guiar a los compañeros más junior, fomentando su desarrollo profesional y asegurando que comprendan y apliquen las mejores prácticas en desarrollo de software. Además, me enfoqué en el desarrollo de nuevas funcionalidades innovadoras y en la optimización de las ya existentes, siempre manteniendo un alto estándar de calidad en el código. Aporté mi experiencia en el uso de microservicios para facilitar el proceso de transición a esta arquitectura, en el cual estamos trabajando actualmente para mejorar la escalabilidad y eficiencia de nuestros proyectos.'
+                    fullDescription: 'Ingresé como apoyo clave en mi equipo, encargado de asistir y guiar a los compañeros más junior, fomentando su desarrollo profesional y asegurando que comprendan y apliquen las mejores prácticas en desarrollo de software. <br/><br/>\n' +
+                        'Además, me enfoqué en el desarrollo de nuevas funcionalidades innovadoras y en la optimización de las ya existentes, siempre manteniendo un alto estándar de calidad en el código. <br/><br/>\n' +
+                        'Aporté mi experiencia en el uso de microservicios para facilitar el proceso de transición a esta arquitectura, en el cual estamos trabajando actualmente para mejorar la escalabilidad y eficiencia de nuestros proyectos.'
                 }
             }
         },

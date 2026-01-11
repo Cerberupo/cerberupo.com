@@ -36,4 +36,5 @@ export enum TagEnum {
     LEAFLET = 'leaflet',
     TYPESCRIPT = 'typescript',
     DOCKER = 'docker',
+    OPEN_AI = 'open_ai',
 }

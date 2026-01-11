@@ -42,6 +42,27 @@ export const en = {
         }
     },
     company: {
+        brickify: {
+            name: 'Brickify',
+            project: {
+                brickify: {
+                    name: 'Brickify',
+                    position: 'CEO & Co-Founder',
+                    description: 'I built Brickify to recommend LEGO-style minifigure pieces that best match each person, quickly and easily.',
+                    fullDescription: 'Brickify was born from a personal experience: <br/>\n' +
+                        'at our wedding, we created custom LEGO minifigures for each guest and placed them directly on the tables. <br/><br/>\n' +
+                        'Seeing the reactions and how people shared photos of the figures after the event showed us how valuable a personal touch can be. <br/><br/>\n' +
+                        'However, finding and matching the right pieces for each person was extremely time-consuming.\' +\n' +
+                        '\'<br/><br/>\n' +
+                        'That’s why I built Brickify: a platform that automatically suggests the LEGO minifigure pieces that most closely match each person, simplifying the process and making it fast, intuitive, and fun. <br/><br/>\n' +
+                        'The frontend is built with React and Astro, while the backend runs on Express on AWS Lambda, using MongoDB as the database. <br/><br/>\n' +
+                        'The entire architecture is designed to be scalable and secure; the frontend is served from AWS S3 with CloudFront, protected by AWS WAF. <br/><br/>\n' +
+                        'When a user places an order, the user’s image is sent to an AI engine that analyzes the photo and searches for the pieces that best resemble the person. <br/><br/>\n' +
+                        'The frontend then displays a preview of what the LEGO minifigure will look like. Brickify allows anyone to create personalized minifigures for weddings, gifts, events, or just for fun, combining creativity, experience, and technology to create unique and memorable keepsakes. <br/><br/>\n' +
+                        'Visit the website: <a style="color: #333333" href="https://brickify.fun">https://brickify.fun</a>\n'
+                }
+            }
+        },
         between: {
             name: 'Between Technology',
             project: {
@@ -49,13 +70,19 @@ export const en = {
                     name: 'Isdin',
                     position: 'Full Stack Lead Developer',
                     description: 'Technical lead with experience in team mentorship, code reviews, technical planning, and cross-functional coordination. Focused on software quality, development efficiency, and delivering technically sound solutions aligned with product objectives.',
-                    fullDescription: 'As the technical lead of the team, I’m responsible for onboarding and mentoring new team members, promoting best development practices and fostering a culture of continuous learning. I conduct thorough code reviews, identifying common issues and suggesting improvements in architecture, style, and performance to ensure clean, maintainable code. I handle the distribution of technical tasks, aligning them with each developer’s strengths and growth areas. I actively participate in time estimations to help plan realistic release cycles, working closely with the product team. Additionally, I serve as a bridge between business and design, facilitating clear communication across teams and proposing technical solutions that balance feasibility with product goals.'
+                    fullDescription: 'As the technical lead of the team, I’m responsible for onboarding and mentoring new team members, promoting best development practices and fostering a culture of continuous learning. <br/><br/>\n' +
+                        'I conduct thorough code reviews, identifying common issues and suggesting improvements in architecture, style, and performance to ensure clean, maintainable code. <br/><br/>\n' +
+                        'I handle the distribution of technical tasks, aligning them with each developer’s strengths and growth areas. <br/><br/>\n' +
+                        'I actively participate in time estimations to help plan realistic release cycles, working closely with the product team. <br/><br/>\n' +
+                        'Additionally, I serve as a bridge between business and design, facilitating clear communication across teams and proposing technical solutions that balance feasibility with product goals.'
                 },
                 isdin: {
                     name: 'Isdin',
                     position: 'Full Stack Developer',
                     description: 'I joined as support, responsible for assisting junior team members and developing new features as well as optimizing existing ones, always with a focus on code quality.',
-                    fullDescription: 'I joined as a key support in my team, responsible for assisting and guiding junior colleagues, fostering their professional development and ensuring they understand and apply best practices in software development. Additionally, I focused on developing innovative new features and optimizing existing ones, always maintaining a high standard of code quality. I contributed my experience in using microservices to facilitate the transition to this architecture, which we are currently working on to improve the scalability and efficiency of our projects.'
+                    fullDescription: 'I joined as a key support in my team, responsible for assisting and guiding junior colleagues, fostering their professional development and ensuring they understand and apply best practices in software development. <br/><br/>\n' +
+                        'Additionally, I focused on developing innovative new features and optimizing existing ones, always maintaining a high standard of code quality. <br/><br/>\n' +
+                        'I contributed my experience in using microservices to facilitate the transition to this architecture, which we are currently working on to improve the scalability and efficiency of our projects.'
                 }
             }
         },

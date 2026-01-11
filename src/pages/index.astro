@@ -74,6 +74,9 @@ import BetweenLogo from '../images/projects/between.webp';
 import IsdinLogo from '../images/projects/isdin.webp';
 import WannabotLogo from '../images/projects/wannabot.webp';
 import WannabotTimeline from '../images/wannabot/timeline.webp';
+import BrickifyTimeline from '../images/brickify/timeline.webp';
+import BrickifyLogo from '../images/projects/brickify.webp';
+import BrickifySmallLogo from '../images/projects/brickify-small.webp';
 import Wannabot1 from '../images/wannabot/1.webp';
 import Wannabot2 from '../images/wannabot/2.webp';
 import Wannabot3 from '../images/wannabot/3.webp';
@@ -122,6 +125,14 @@ import Demoagro7 from '../images/demoagro/7.webp';
 import IsdinTimeline from '../images/isdin/timeline.webp';
 import CatSection from "../components/CatSection.astro";
 import Footer from "../components/Footer.astro";
+import Brickify1 from '../images/brickify/1.webp';
+import Brickify2 from '../images/brickify/2.webp';
+import Brickify3 from '../images/brickify/3.webp';
+import Brickify4 from '../images/brickify/4.webp';
+import Brickify5 from '../images/brickify/5.webp';
+import Brickify6 from '../images/brickify/6.webp';
+import Brickify7 from '../images/brickify/7.webp';
+import Brickify8 from '../images/brickify/8.webp';
 
 const {t, locale} = useTranslations(Astro.url);
 ---
@@ -131,6 +142,43 @@ const {t, locale} = useTranslations(Astro.url);
     <CodingSection/>
     <CareerSection/>
     <Timeline companies={[
+        {
+            name: t('company.brickify.name'),
+            logo: BrickifySmallLogo,
+            side: 'left',
+            projects: [
+                {
+                    endDate: new Date(),
+                    startDate: new Date('01/01/2026'),
+                    color: '#000000',
+                    noImage: true,
+                    proyectLogo: BrickifyLogo,
+                    proyectImage: BrickifyTimeline,
+                    proyectName: t('company.brickify.project.brickify.name'),
+                    proyectCardProps: {
+                        current: true,
+                        name: t('company.brickify.project.brickify.name'),
+                        position: t('company.brickify.project.brickify.position'),
+                        logo: BrickifyLogo,
+                        longLogo: true,
+                        description: t('company.brickify.project.brickify.description'),
+                        tags: [TagEnum.OPEN_AI, TagEnum.AWS, TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB],
+                        fullTags: [TagEnum.REACT, TagEnum.NODE_JS, TagEnum.MONGO_DB, TagEnum.AWS, TagEnum.AWS_LAMBDA, TagEnum.AWS_CLOUDFRONT, TagEnum.AWS_GATEWAY, TagEnum.AWS_ROUTE53, TagEnum.AWS_SES],
+                        fullDescription: t('company.brickify.project.brickify.fullDescription'),
+                        images: [
+                            Brickify1,
+                            Brickify2,
+                            Brickify3,
+                            Brickify4,
+                            Brickify5,
+                            Brickify6,
+                            Brickify7,
+                            Brickify8
+                        ]
+                    }
+                },
+            ]
+        },
         {
             name: t('company.between.name'),
             logo: BetweenLogo,
